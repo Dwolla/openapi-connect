@@ -1,0 +1,12 @@
+{
+  "Root": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "./common.json#/components/schemas/HalLink"
+        }
+      }
+    }
+  }
+}

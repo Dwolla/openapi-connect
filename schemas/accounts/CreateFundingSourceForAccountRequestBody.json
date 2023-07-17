@@ -1,0 +1,42 @@
+{
+  "CreateFundingSourceForAccountRequestBody": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "treasuryAccount": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "name": {
+        "type": "string"
+      },
+      "bankAccountType": {
+        "type": "string",
+        "enum": [
+          "checking",
+          "savings"
+        ]
+      },
+      "accountNumber": {
+        "type": "string"
+      },
+      "routingNumber": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "bankAccountType",
+      "accountNumber",
+      "routingNumber"
+    ]
+  }
+}

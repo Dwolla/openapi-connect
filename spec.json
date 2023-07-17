@@ -1,0 +1,89 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Dwolla Connect",
+    "description": "Dwolla Connect API Documentation",
+    "contact": {
+      "name": "Developer Relations",
+      "email": "developers@dwolla.com",
+      "url": "https://dwolla.com"
+    },
+    "termsOfService": "https://dwolla.com/legal/tos",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/Dwolla/openapi-connect/blob/main/LICENSE"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.dwolla.com",
+      "description": "Production"
+    },
+    {
+      "url": "https://api-sandbox.dwolla.com",
+      "description": "Sandbox"
+    }
+  ],
+  "paths": {
+    "/token": {
+      "$ref": "./paths/token.json"
+    },
+    "/": {
+      "$ref": "./paths/root.json"
+    },
+    "/funding-sources": {
+      "$ref": "./paths/accounts/createFundingSource.json"
+    },
+    "/accounts/{id}/funding-sources": {
+      "$ref": "./paths/accounts/listFundingSources.json"
+    },
+    "/external-parties": {
+      "$ref": "./paths/external-parties/createListExternalParties.json"
+    },
+    "/external-parties/{id}": {
+      "$ref": "./paths/external-parties/getExternalParty.json"
+    },
+    "/external-parties/{id}/funding-sources": {
+      "$ref": "./paths/external-parties/createListFundingSources.json"
+    },
+    "/funding-sources/{id}": {
+      "$ref": "./paths/funding-sources/getFundingSource.json"
+    },
+    "/transfers": {
+      "$ref": "./paths/transfers/createTransfer.json"
+    },
+    "/transfers/{id}": {
+      "$ref": "./paths/transfers/getTransfer.json"
+    },
+    "/treasury-accounts": {
+      "$ref": "./paths/treasury-accounts/createListTreasuryAccounts.json"
+    },
+    "/treasury-accounts/{id}": {
+      "$ref": "./paths/treasury-accounts/getTreasuryAccount.json"
+    },
+    "/treasury-partners/{id}": {
+      "$ref": "./paths/treasury-partners/getTreasuryPartner.json"
+    },
+    "/treasury-partners": {
+      "$ref": "./paths/treasury-partners/listTreasuryPartners.json"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

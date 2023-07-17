@@ -1,0 +1,30 @@
+{
+  "FundingSource": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "bankAccountType": {
+        "type": "string",
+        "enum": [
+          "checking",
+          "savings"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "created": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "post": {
+    "tags": [
+      "Transfers"
+    ],
+    "summary": "Create Transfer",
+    "description": "Create a new Transfer, sending money from a `source` Funding Source to a `destination` Funding Source.\n\nIf the sender Funding Source has a `treasuryAccount` link, the Transfer type will be `credit`; otherwise, if the `treasuryAccount` link is on the destination Funding Source, the Transfer type will be `debit`.",
+    "operationId": "createTransfer",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/transfers/CreateTransferRequestBody.json#/CreateTransferRequestBody"
+          },
+          "example": {
+            "_links": {
+              "source": {
+                "href": "https://api.dwolla.com/funding-sources/{{sourceFundingSourceId}}"
+              },
+              "destination": {
+                "href": "https://api.dwolla.com/funding-sources/{{destinationFundingSourceId}}"
+              }
+            },
+            "amount": {
+              "currency": "USD",
+              "value": "10.00"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "headers": {
+          "Location": {
+            "$ref": "../../schemas/common.json#/components/headers/Location"
+          }
+        }
+      }
+    }
+  }
+}

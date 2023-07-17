@@ -1,0 +1,69 @@
+{
+  "get": {
+    "tags": [
+      "External Parties"
+    ],
+    "summary": "Get External Party",
+    "description": "Get an External Party by ID",
+    "operationId": "getExternalParty",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of External Party",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/external-parties/ExternalParty.json#/ExternalParty"
+            },
+            "examples": {
+              "Business": {
+                "value": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/external-parties/4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "external-party"
+                    }
+                  },
+                  "id": "4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                  "created": "2023-07-14T21:04:27.087Z",
+                  "email": "john.doe@example.com",
+                  "businessName": "John Doe Equipment, LLC",
+                  "externalPartyType": "business"
+                }
+              },
+              "Personal": {
+                "value": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "external-party"
+                    }
+                  },
+                  "id": "83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                  "created": "2023-07-14T21:06:15.186Z",
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "email": "john.doe@example.com",
+                  "externalPartyType": "personal"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

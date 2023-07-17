@@ -1,0 +1,54 @@
+{
+  "CreateExternalPartyRequestBody": {
+    "oneOf": [
+      {
+        "$ref": "#/CreateBusinessExternalPartyRequestBody"
+      },
+      {
+        "$ref": "#/CreatePersonalExternalBodyRequestBody"
+      }
+    ]
+  },
+  "CreateBusinessExternalPartyRequestBody": {
+    "type": "object",
+    "properties": {
+      "businessName": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "correlationId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "businessName",
+      "email"
+    ]
+  },
+  "CreatePersonalExternalBodyRequestBody": {
+    "type": "object",
+    "properties": {
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "email": {
+        "type": "string",
+        "format": "email"
+      },
+      "correlationId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "firstName",
+      "lastName",
+      "email"
+    ]
+  }
+}

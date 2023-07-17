@@ -1,0 +1,45 @@
+{
+  "get": {
+    "tags": [
+      "Treasury Partners"
+    ],
+    "summary": "Get Treasury Partner",
+    "description": "Get detailed information of a Transfer Partner by its UUID.",
+    "operationId": "getTreasuryPartner",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of Treasury Partner",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/treasury-partners/TreasuryPartner.json#/TreasuryPartner"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/treasury-partners/63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "treasury-partners"
+                }
+              },
+              "id": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+              "name": "J.P. Morgan"
+            }
+          }
+        }
+      }
+    }
+  }
+}

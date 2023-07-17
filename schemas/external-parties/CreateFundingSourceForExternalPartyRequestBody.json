@@ -1,0 +1,29 @@
+{
+  "CreateFundingSourceForExternalPartyRequestBody": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "bankAccountType": {
+        "type": "string",
+        "enum": [
+          "checking",
+          "savings"
+        ]
+      },
+      "accountNumber": {
+        "type": "string"
+      },
+      "routingNumber": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "name",
+      "bankAccountType",
+      "accountNumber",
+      "routingNumber"
+    ]
+  }
+}

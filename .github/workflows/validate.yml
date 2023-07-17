@@ -1,0 +1,27 @@
+name: Validate OpenAPI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Use NVM Node version
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install Swagger CLI
+        run: npm install -g swagger-cli
+
+      - name: Validate OpenAPI specification
+        run: swagger-cli validate ./spec.json

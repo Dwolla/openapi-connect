@@ -1,0 +1,23 @@
+{
+  "TreasuryPartners": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "treasury-partners": {
+            "type": "array",
+            "items": {
+              "$ref": "./TreasuryPartner.json#/TreasuryPartner"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "get": {
+    "tags": [
+      "Root"
+    ],
+    "summary": "Root",
+    "description": "Entrypoint to Dwolla's API. Can be used to fetch Account, Funding Sources, and more.",
+    "operationId": "getRoot",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../schemas/Root.json#/Root"
+            },
+            "example": {
+              "_links": {
+                "account": {
+                  "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "account"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "TreasuryAccounts": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "treasury-accounts": {
+            "type": "array",
+            "items": {
+              "$ref": "./TreasuryAccount.json#/TreasuryAccount"
+            }
+          }
+        }
+      }
+    }
+  }
+}

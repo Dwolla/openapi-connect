@@ -1,0 +1,39 @@
+{
+  "Transfer": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "id": {
+        "type": "string",
+        "format": "uuid"
+      },
+      "created": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "amount": {
+        "$ref": "../common.json#/components/schemas/Amount"
+      },
+      "transferType": {
+        "type": "string",
+        "enum": [
+          "credit",
+          "debit"
+        ]
+      },
+      "transferStatus": {
+        "type": "string",
+        "enum": [
+          "created",
+          "pending",
+          "processed",
+          "failed"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "CreateTreasuryAccountRequestBody": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "treasuryPartner": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "href"
+            ]
+          }
+        },
+        "required": [
+          "treasuryPartner"
+        ]
+      },
+      "name": {
+        "type": "string"
+      },
+      "treasuryPartnerContext": {
+        "oneOf": [
+          {
+            "allOf": [
+              {
+                "$ref": "./TreasuryAccount.json#/TreasuryPartnerContextJPM"
+              },
+              {
+                "required": [
+                  "achCoId"
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "$ref": "./TreasuryAccount.json#/TreasuryPartnerContextWF"
+              },
+              {
+                "required": [
+                  "gatewayCompanyId"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "required": [
+      "_links",
+      "name",
+      "treasuryPartnerContext"
+    ]
+  }
+}

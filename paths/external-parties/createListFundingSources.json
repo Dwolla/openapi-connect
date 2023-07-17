@@ -1,0 +1,112 @@
+{
+  "post": {
+    "tags": [
+      "External Parties",
+      "Funding Sources"
+    ],
+    "summary": "Create Funding Source for External Party",
+    "description": "Create a bank Funding Source that's attached to an External Party.\n\nA Funding Source is required when creating a Transfer, as a sender or destination.",
+    "operationId": "createFundingSourceForExternalParty",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of External Party",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/external-parties/CreateFundingSourceForExternalPartyRequestBody.json#/CreateFundingSourceForExternalPartyRequestBody"
+          },
+          "example": {
+            "name": "Test Bank",
+            "bankAccountType": "checking",
+            "accountNumber": "123456789",
+            "routingNumber": "222222226"
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "headers": {
+          "Location": {
+            "$ref": "../../schemas/common.json#/components/headers/Location"
+          }
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "External Parties",
+      "Funding Sources"
+    ],
+    "summary": "List Funding Sources for External Party",
+    "description": "List all Funding Sources that your application has created for an External Party.",
+    "operationId": "listFundingSourcesForExternalParty",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of External Party",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/funding-sources/FundingSources.json#/FundingSources"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae/funding-sources",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
+                }
+              },
+              "_embedded": {
+                "funding-sources": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/funding-sources/9bb42992-a03b-422d-8c52-82b14828dbac",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                      },
+                      "external-party": {
+                        "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "external-party"
+                      }
+                    },
+                    "id": "9bb42992-a03b-422d-8c52-82b14828dbac",
+                    "bankAccountType": "checking",
+                    "name": "Test Bank",
+                    "created": "2023-07-15T17:52:37.211Z"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

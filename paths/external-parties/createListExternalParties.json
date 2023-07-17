@@ -1,0 +1,108 @@
+{
+  "post": {
+    "tags": [
+      "External Parties"
+    ],
+    "summary": "Create External Party",
+    "description": "Create a business or personal External Party, to which a Funding Source can be later attached.",
+    "operationId": "createExternalParty",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/external-parties/CreateExternalPartyRequestBody.json#/CreateExternalPartyRequestBody"
+          },
+          "examples": {
+            "Business": {
+              "value": {
+                "businessName": "John Doe Equipment, LLC",
+                "email": "john.doe@example.com",
+                "correlationId": "efac856f-fdde-459c-8af7-24e3431cd07b"
+              }
+            },
+            "Personal": {
+              "value": {
+                "firstName": "John",
+                "lastName": "Doe",
+                "email": "john.doe@example.com",
+                "correlationId": "df9f49c9-67f2-40eb-bf73-2e7101fbd136"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "headers": {
+          "Location": {
+            "$ref": "../../schemas/common.json#/components/headers/Location"
+          }
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "External Parties"
+    ],
+    "summary": "List External Parties",
+    "description": "List all External Parties that have been created by your application.",
+    "operationId": "listExternalParties",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/external-parties/ExternalParties.json#/ExternalParties"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/external-parties",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "external-party"
+                }
+              },
+              "_embedded": {
+                "external-parties": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/external-parties/4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "external-party"
+                      }
+                    },
+                    "id": "4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                    "created": "2023-07-14T21:04:27.087Z",
+                    "email": "john.doe@example.com",
+                    "businessName": "John Doe Equipment, LLC",
+                    "externalPartyType": "business"
+                  },
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "external-party"
+                      }
+                    },
+                    "id": "83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                    "created": "2023-07-14T21:06:15.186Z",
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com",
+                    "externalPartyType": "personal"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

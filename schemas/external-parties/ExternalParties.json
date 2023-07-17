@@ -1,0 +1,23 @@
+{
+  "ExternalParties": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "external-parties": {
+            "type": "array",
+            "items": {
+              "$ref": "./ExternalParty.json#/ExternalParty"
+            }
+          }
+        }
+      }
+    }
+  }
+}

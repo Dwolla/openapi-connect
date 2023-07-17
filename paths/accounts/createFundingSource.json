@@ -1,0 +1,41 @@
+{
+  "post": {
+    "tags": [
+      "Accounts",
+      "Funding Sources"
+    ],
+    "summary": "Create Funding Source for Account",
+    "description": "Create a Funding Source that is attached to your Main Account.\n\nThe created Funding Source can be used as the `sender` for `debit` Transfers, or as the `destination` for `credit` Transfers.",
+    "operationId": "createFundingSourceForAccount",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/accounts/CreateFundingSourceForAccountRequestBody.json#/CreateFundingSourceForAccountRequestBody"
+          },
+          "example": {
+            "_links": {
+              "treasuryAccount": {
+                "href": "{{baseUrl}}/treasury-accounts/{{treasuryAccountId}}"
+              }
+            },
+            "name": "My Test Bank",
+            "bankAccountType": "checking",
+            "accountNumber": "123456789",
+            "routingNumber": "222222226"
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "headers": {
+          "Location": {
+            "$ref": "../../schemas/common.json#/components/headers/Location"
+          }
+        }
+      }
+    }
+  }
+}

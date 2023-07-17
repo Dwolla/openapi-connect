@@ -1,0 +1,57 @@
+{
+  "get": {
+    "tags": [
+      "Treasury Partners"
+    ],
+    "summary": "List Treasury Partners",
+    "description": "List all Transfer Partners that Dwolla currently supports.",
+    "operationId": "listTreasuryPartners",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/treasury-partners/TreasuryPartners.json#/TreasuryPartners"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/treasury-partners",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "treasury-partners"
+                }
+              },
+              "_embedded": {
+                "treasury-partners": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/treasury-partners/63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "treasury-partners"
+                      }
+                    },
+                    "id": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                    "name": "J.P. Morgan"
+                  },
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/treasury-partners/50a1a90b-c960-4c9f-bfb3-15a91ba0df60",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "treasury-partners"
+                      }
+                    },
+                    "id": "50a1a90b-c960-4c9f-bfb3-15a91ba0df60",
+                    "name": "Wells Fargo"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

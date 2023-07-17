@@ -1,0 +1,48 @@
+{
+  "CreateTransferRequestBody": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "href"
+            ]
+          },
+          "destination": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "href"
+            ]
+          }
+        },
+        "required": [
+          "source",
+          "destination"
+        ]
+      },
+      "amount": {
+        "$ref": "../common.json#/components/schemas/Amount"
+      },
+      "correlationId": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_links",
+      "amount"
+    ]
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "post": {
+    "tags": [
+      "Treasury Accounts"
+    ],
+    "summary": "Create Treasury Account",
+    "description": "Create a Treasury Account that can be attached to a Funding Source.",
+    "operationId": "createTreasuryAccount",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/treasury-accounts/CreateTreasuryAccountRequestBody.json#/CreateTreasuryAccountRequestBody"
+          },
+          "examples": {
+            "J.P. Morgan": {
+              "value": {
+                "_links": {
+                  "treasuryPartner": {
+                    "href": "https://api.dwolla.com/treasury-partners/{{treasuryPartnerId}}"
+                  }
+                },
+                "name": "My JPM Account",
+                "treasuryPartnerContext": {
+                  "achCoId": "4161803583"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "headers": {
+          "Location": {
+            "$ref": "../../schemas/common.json#/components/headers/Location"
+          }
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Treasury Accounts"
+    ],
+    "summary": "List Treasury Accounts",
+    "description": "List all Treasury Accounts that have been created by your application.",
+    "operationId": "listTreasuryAccounts",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/treasury-accounts/TreasuryAccounts.json#/TreasuryAccounts"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/treasury-accounts",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "treasury-account"
+                }
+              },
+              "_embedded": {
+                "treasury-accounts": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "treasury-account"
+                      }
+                    },
+                    "id": "e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                    "name": "Test JPM Account",
+                    "created": "2023-07-14T19:16:46.694Z",
+                    "accountId": "22926523-b517-43b9-959b-6ac4a422d71e",
+                    "treasuryPartnerId": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                    "treasuryPartnerContext": {
+                      "achCoId": "4161803583"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

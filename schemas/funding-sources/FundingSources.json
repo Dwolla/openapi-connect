@@ -1,0 +1,23 @@
+{
+  "FundingSources": {
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "funding-sources": {
+            "type": "array",
+            "items": {
+              "$ref": "./FundingSource.json#/FundingSource"
+            }
+          }
+        }
+      }
+    }
+  }
+}
