@@ -1,5 +1,6 @@
 {
   "Transfer": {
+    "title": "Transfer",
     "type": "object",
     "properties": {
       "_links": {

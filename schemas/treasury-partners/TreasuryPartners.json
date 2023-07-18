@@ -1,5 +1,6 @@
 {
   "TreasuryPartners": {
+    "title": "TreasuryPartners",
     "type": "object",
     "properties": {
       "_links": {

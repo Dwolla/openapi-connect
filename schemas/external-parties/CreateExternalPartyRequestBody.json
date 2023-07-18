@@ -1,5 +1,6 @@
 {
   "CreateExternalPartyRequestBody": {
+    "title": "CreateExternalPartyRequestBody",
     "oneOf": [
       {
         "$ref": "#/CreateBusinessExternalPartyRequestBody"
@@ -10,6 +11,7 @@
     ]
   },
   "CreateBusinessExternalPartyRequestBody": {
+    "title": "CreateBusinessExternalPartyRequestBody",
     "type": "object",
     "properties": {
       "businessName": {
@@ -29,6 +31,7 @@
     ]
   },
   "CreatePersonalExternalBodyRequestBody": {
+    "title": "CreatePersonalExternalBodyRequestBody",
     "type": "object",
     "properties": {
       "firstName": {

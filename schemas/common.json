@@ -10,6 +10,7 @@
     },
     "schemas": {
       "Amount": {
+        "title": "Amount",
         "type": "object",
         "properties": {
           "currency": {
@@ -24,6 +25,7 @@
         }
       },
       "HalLink": {
+        "title": "HalLink",
         "type": "object",
         "properties": {
           "href": {

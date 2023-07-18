@@ -1,5 +1,6 @@
 {
   "Root": {
+    "title": "Root",
     "type": "object",
     "properties": {
       "_links": {

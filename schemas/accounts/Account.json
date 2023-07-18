@@ -1,5 +1,6 @@
 {
   "Account": {
+    "title": "Account",
     "type": "object",
     "properties": {
       "_links": {

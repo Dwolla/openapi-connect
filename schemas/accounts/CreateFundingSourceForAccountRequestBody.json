@@ -1,5 +1,6 @@
 {
   "CreateFundingSourceForAccountRequestBody": {
+    "title": "CreateFundingSourceForAccountRequestBody",
     "type": "object",
     "properties": {
       "_links": {

@@ -1,5 +1,6 @@
 {
   "TreasuryAccount": {
+    "title": "TreasuryAccount",
     "type": "object",
     "properties": {
       "_links": {
@@ -39,6 +40,7 @@
     }
   },
   "TreasuryPartnerContextJPM": {
+    "title": "TreasuryPartnerContextJPM",
     "type": "object",
     "properties": {
       "achCoId": {
@@ -47,6 +49,7 @@
     }
   },
   "TreasuryPartnerContextWF": {
+    "title": "TreasuryPartnerContextWF",
     "type": "object",
     "properties": {
       "gatewayCompanyId": {

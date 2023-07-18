@@ -1,5 +1,6 @@
 {
   "ExternalParties": {
+    "title": "ExternalParties",
     "type": "object",
     "properties": {
       "_links": {

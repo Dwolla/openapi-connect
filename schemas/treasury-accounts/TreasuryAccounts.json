@@ -1,5 +1,6 @@
 {
   "TreasuryAccounts": {
+    "title": "TreasuryAccounts",
     "type": "object",
     "properties": {
       "_links": {

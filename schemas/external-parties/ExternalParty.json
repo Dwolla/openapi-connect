@@ -1,5 +1,6 @@
 {
   "ExternalParty": {
+    "title": "ExternalParty",
     "oneOf": [
       {
         "$ref": "#/BusinessExternalParty"
@@ -10,6 +11,7 @@
     ]
   },
   "BusinessExternalParty": {
+    "title": "BusinessExternalParty",
     "type": "object",
     "properties": {
       "_links": {
@@ -41,6 +43,7 @@
     }
   },
   "PersonalExternalParty": {
+    "title": "PersonalExternalParty",
     "type": "object",
     "properties": {
       "_links": {

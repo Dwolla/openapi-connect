@@ -1,5 +1,6 @@
 {
   "CreateFundingSourceForExternalPartyRequestBody": {
+    "title": "CreateFundingSourceForExternalPartyRequestBody",
     "type": "object",
     "properties": {
       "name": {

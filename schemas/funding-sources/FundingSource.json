@@ -1,5 +1,6 @@
 {
   "FundingSource": {
+    "title": "FundingSource",
     "type": "object",
     "properties": {
       "_links": {

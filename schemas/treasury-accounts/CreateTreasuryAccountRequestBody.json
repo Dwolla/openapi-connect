@@ -1,5 +1,6 @@
 {
   "CreateTreasuryAccountRequestBody": {
+    "title": "CreateTreasuryAccountRequestBody",
     "type": "object",
     "properties": {
       "_links": {
