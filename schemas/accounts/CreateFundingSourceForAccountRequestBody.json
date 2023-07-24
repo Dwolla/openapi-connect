@@ -6,7 +6,7 @@
       "_links": {
         "type": "object",
         "properties": {
-          "treasuryAccount": {
+          "treasury-account": {
             "type": "object",
             "properties": {
               "href": {
