@@ -16,7 +16,10 @@ if git rev-parse --verify $REDOCLY_GIT_BRANCH > /dev/null; then
   console_log "Branch $REDOCLY_GIT_BRANCH found, attempting to check out..."
 
   if [[ $(git rev-parse --abbrev-ref HEAD) != "$REDOCLY_GIT_BRANCH" ]]; then
-    git checkout $REDOCLY_GIT_BRANCH
+    if [[ $(git checkout $REDOCLY_GIT_BRANCH; echo $?) == 1 ]]; then
+      console_log "Failed to checkout $REDOCLY_GIT_BRANCH branch, exiting..."
+      exit 1
+    fi
   else
     console_log "Branch $REDOCLY_GIT_BRANCH is already checked out, skipping..."
   fi
@@ -42,6 +45,6 @@ redocly build-docs $REDOCLY_OUTPUT_DIR/bundled.json -o $REDOCLY_OUTPUT_DIR/index
 rm $REDOCLY_OUTPUT_DIR/bundled.json
 
 # Commit & push changes to GitHub
-console_log "Committing with message '$GIT_COMMIT_MSG'"
+git add $REDOCLY_OUTPUT_DIR
 git commit --allow-empty -m "$GIT_COMMIT_MSG"
 git push -u origin $REDOCLY_GIT_BRANCH
