@@ -35,8 +35,14 @@
     "/funding-sources": {
       "$ref": "./paths/accounts/createFundingSource.json"
     },
+    "/accounts/{id}": {
+      "$ref": "./paths/accounts/getAccount.json"
+    },
     "/accounts/{id}/funding-sources": {
       "$ref": "./paths/accounts/listFundingSources.json"
+    },
+    "/accounts/{id}/transfers": {
+      "$ref": "./paths/accounts/listAccountTransfers.json"
     },
     "/external-parties": {
       "$ref": "./paths/external-parties/createListExternalParties.json"
