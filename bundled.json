@@ -1,0 +1,1533 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Dwolla Connect",
+    "description": "Dwolla Connect API Documentation",
+    "contact": {
+      "name": "Developer Relations",
+      "email": "developers@dwolla.com",
+      "url": "https://dwolla.com"
+    },
+    "termsOfService": "https://dwolla.com/legal/tos",
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/Dwolla/openapi-connect/blob/main/LICENSE"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.dwolla.com",
+      "description": "Production"
+    },
+    {
+      "url": "https://api-sandbox.dwolla.com",
+      "description": "Sandbox"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/token": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Generate Access Token",
+        "description": "Generate an access token for Dwolla's Connect API",
+        "operationId": "createAccessToken",
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "client_id": {
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "type": "string"
+                  },
+                  "grant_type": {
+                    "type": "string",
+                    "enum": [
+                      "client_credentials"
+                    ]
+                  }
+                },
+                "required": [
+                  "client_id",
+                  "client_secret",
+                  "grant_type"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "example": {
+                  "access_token": "connect.eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJUaGlzIGlzIE5PVCBhIHJlYWwgRHdvbGxhIENvbm5lY3QgdG9rZW4ifQ.TB05eEU58XdygDMPcIlYVDRZvX3aQMbwJRYoQhu_KP0",
+                  "token_type": "Bearer",
+                  "expires_in": 3599
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Root"
+        ],
+        "summary": "Root",
+        "description": "Entrypoint to Dwolla's API. Can be used to fetch Account, Funding Sources, and more.",
+        "operationId": "getRoot",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Root"
+                },
+                "example": {
+                  "_links": {
+                    "account": {
+                      "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "account"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/funding-sources": {
+      "post": {
+        "tags": [
+          "Accounts",
+          "Funding Sources"
+        ],
+        "summary": "Create Funding Source for Account",
+        "description": "Create a Funding Source that is attached to your Main Account.\n\nThe created Funding Source can be used as the `sender` for `debit` Transfers, or as the `destination` for `credit` Transfers.",
+        "operationId": "createFundingSourceForAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFundingSourceForAccountRequestBody"
+              },
+              "example": {
+                "_links": {
+                  "treasury-account": {
+                    "href": "{{baseUrl}}/treasury-accounts/{{treasuryAccountId}}"
+                  }
+                },
+                "name": "My Test Bank",
+                "bankAccountType": "checking",
+                "accountNumber": "123456789",
+                "routingNumber": "222222226"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts/{id}/funding-sources": {
+      "get": {
+        "tags": [
+          "Accounts",
+          "Funding Sources"
+        ],
+        "summary": "List Funding Sources for Account",
+        "description": "List all Funding Sources that have been created for your Main Account.",
+        "operationId": "listFundingSourcesForAccount",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Main Account",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FundingSources"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e/funding-sources",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    }
+                  },
+                  "_embedded": {
+                    "funding-sources": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          },
+                          "treasury-account": {
+                            "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "treasury-account"
+                          }
+                        },
+                        "id": "f815137a-f7b1-432b-976b-e52832ede996",
+                        "bankAccountType": "checking",
+                        "name": "My Test Bank",
+                        "created": "2023-07-17T18:04:24.772Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external-parties": {
+      "post": {
+        "tags": [
+          "External Parties"
+        ],
+        "summary": "Create External Party",
+        "description": "Create a business or personal External Party, to which a Funding Source can be later attached.",
+        "operationId": "createExternalParty",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateExternalPartyRequestBody"
+              },
+              "examples": {
+                "Business": {
+                  "value": {
+                    "businessName": "John Doe Equipment, LLC",
+                    "email": "john.doe@example.com"
+                  }
+                },
+                "Personal": {
+                  "value": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "email": "john.doe@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "External Parties"
+        ],
+        "summary": "List External Parties",
+        "description": "List all External Parties that have been created by your application.",
+        "operationId": "listExternalParties",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalParties"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/external-parties",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "external-party"
+                    }
+                  },
+                  "_embedded": {
+                    "external-parties": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/external-parties/4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "external-party"
+                          }
+                        },
+                        "id": "4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                        "created": "2023-07-14T21:04:27.087Z",
+                        "email": "john.doe@example.com",
+                        "businessName": "John Doe Equipment, LLC",
+                        "externalPartyType": "business"
+                      },
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "external-party"
+                          }
+                        },
+                        "id": "83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                        "created": "2023-07-14T21:06:15.186Z",
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "email": "john.doe@example.com",
+                        "externalPartyType": "personal"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external-parties/{id}": {
+      "get": {
+        "tags": [
+          "External Parties"
+        ],
+        "summary": "Get External Party",
+        "description": "Get an External Party by ID",
+        "operationId": "getExternalParty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of External Party",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExternalParty"
+                },
+                "examples": {
+                  "Business": {
+                    "value": {
+                      "_links": {
+                        "self": {
+                          "href": "https://api.dwolla.com/external-parties/4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                          "type": "application/vnd.dwolla.v1.hal+json",
+                          "resource-type": "external-party"
+                        }
+                      },
+                      "id": "4e701a67-b18c-4d8c-b7e5-7f2b8b8f702a",
+                      "created": "2023-07-14T21:04:27.087Z",
+                      "email": "john.doe@example.com",
+                      "businessName": "John Doe Equipment, LLC",
+                      "externalPartyType": "business"
+                    }
+                  },
+                  "Personal": {
+                    "value": {
+                      "_links": {
+                        "self": {
+                          "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                          "type": "application/vnd.dwolla.v1.hal+json",
+                          "resource-type": "external-party"
+                        }
+                      },
+                      "id": "83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                      "created": "2023-07-14T21:06:15.186Z",
+                      "firstName": "John",
+                      "lastName": "Doe",
+                      "email": "john.doe@example.com",
+                      "externalPartyType": "personal"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external-parties/{id}/funding-sources": {
+      "post": {
+        "tags": [
+          "External Parties",
+          "Funding Sources"
+        ],
+        "summary": "Create Funding Source for External Party",
+        "description": "Create a bank Funding Source that's attached to an External Party.\n\nA Funding Source is required when creating a Transfer, as a sender or destination.",
+        "operationId": "createFundingSourceForExternalParty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of External Party",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFundingSourceForExternalPartyRequestBody"
+              },
+              "example": {
+                "name": "Test Bank",
+                "bankAccountType": "checking",
+                "accountNumber": "123456789",
+                "routingNumber": "222222226"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "External Parties",
+          "Funding Sources"
+        ],
+        "summary": "List Funding Sources for External Party",
+        "description": "List all Funding Sources that your application has created for an External Party.",
+        "operationId": "listFundingSourcesForExternalParty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of External Party",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FundingSources"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae/funding-sources",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    }
+                  },
+                  "_embedded": {
+                    "funding-sources": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/funding-sources/9bb42992-a03b-422d-8c52-82b14828dbac",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          },
+                          "external-party": {
+                            "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "external-party"
+                          }
+                        },
+                        "id": "9bb42992-a03b-422d-8c52-82b14828dbac",
+                        "bankAccountType": "checking",
+                        "name": "Test Bank",
+                        "created": "2023-07-15T17:52:37.211Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/funding-sources/{id}": {
+      "get": {
+        "tags": [
+          "Funding Sources"
+        ],
+        "summary": "Get Funding Source",
+        "description": "Get detailed information of a Funding Source by its ID.",
+        "operationId": "getFundingSource",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Funding Source",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FundingSource"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/funding-sources/9bb42992-a03b-422d-8c52-82b14828dbac",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    },
+                    "external-party": {
+                      "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "external-party"
+                    }
+                  },
+                  "id": "9bb42992-a03b-422d-8c52-82b14828dbac",
+                  "bankAccountType": "checking",
+                  "name": "Dwolla Bank",
+                  "created": "2023-07-15T17:52:37.211Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transfers": {
+      "post": {
+        "tags": [
+          "Transfers"
+        ],
+        "summary": "Create Transfer",
+        "description": "Create a new Transfer, sending money from a `source` Funding Source to a `destination` Funding Source.\n\nIf the sender Funding Source has a `treasuryAccount` link, the Transfer type will be `credit`; otherwise, if the `treasuryAccount` link is on the destination Funding Source, the Transfer type will be `debit`.",
+        "operationId": "createTransfer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTransferRequestBody"
+              },
+              "example": {
+                "_links": {
+                  "source": {
+                    "href": "https://api.dwolla.com/funding-sources/{{sourceFundingSourceId}}"
+                  },
+                  "destination": {
+                    "href": "https://api.dwolla.com/funding-sources/{{destinationFundingSourceId}}"
+                  }
+                },
+                "amount": {
+                  "currency": "USD",
+                  "value": "10.00"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transfers/{id}": {
+      "get": {
+        "tags": [
+          "Transfers"
+        ],
+        "summary": "Get Transfer",
+        "description": "Get detailed information of a Transfer by ID.",
+        "operationId": "getTransfer",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Transfer",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transfer"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/transfers/7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
+                    },
+                    "source-funding-source": {
+                      "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    },
+                    "destination-funding-source": {
+                      "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    }
+                  },
+                  "id": "7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                  "created": "2023-07-17T20:32:55.679Z",
+                  "amount": {
+                    "value": "10.00",
+                    "currency": "USD"
+                  },
+                  "transferType": "credit",
+                  "transferStatus": "created"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/treasury-accounts": {
+      "post": {
+        "tags": [
+          "Treasury Accounts"
+        ],
+        "summary": "Create Treasury Account",
+        "description": "Create a Treasury Account that can be attached to a Funding Source.",
+        "operationId": "createTreasuryAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTreasuryAccountRequestBody"
+              },
+              "examples": {
+                "J.P. Morgan": {
+                  "value": {
+                    "_links": {
+                      "treasuryPartner": {
+                        "href": "https://api.dwolla.com/treasury-partners/{{treasuryPartnerId}}"
+                      }
+                    },
+                    "name": "My JPM Account",
+                    "treasuryPartnerContext": {
+                      "achCoId": "4161803583"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Treasury Accounts"
+        ],
+        "summary": "List Treasury Accounts",
+        "description": "List all Treasury Accounts that have been created by your application.",
+        "operationId": "listTreasuryAccounts",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TreasuryAccounts"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/treasury-accounts",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "treasury-account"
+                    }
+                  },
+                  "_embedded": {
+                    "treasury-accounts": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "treasury-account"
+                          }
+                        },
+                        "id": "e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                        "name": "Test JPM Account",
+                        "created": "2023-07-14T19:16:46.694Z",
+                        "accountId": "22926523-b517-43b9-959b-6ac4a422d71e",
+                        "treasuryPartnerId": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                        "treasuryPartnerContext": {
+                          "achCoId": "4161803583"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/treasury-accounts/{id}": {
+      "get": {
+        "tags": [
+          "Treasury Accounts"
+        ],
+        "summary": "Get Treasury Account",
+        "description": "Get detailed information of a Treasury Account by ID.",
+        "operationId": "getTreasuryAccount",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Treasury Account",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TreasuryAccount"
+                },
+                "examples": {
+                  "J.P. Morgan": {
+                    "value": {
+                      "_links": {
+                        "self": {
+                          "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                          "type": "application/vnd.dwolla.v1.hal+json",
+                          "resource-type": "treasury-account"
+                        }
+                      },
+                      "id": "e60d1372-f398-4c03-b4e7-499a4a7f8b27",
+                      "name": "My JPM Account",
+                      "created": "2023-07-14T19:16:46.694Z",
+                      "accountId": "22926523-b517-43b9-959b-6ac4a422d71e",
+                      "treasuryPartnerId": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                      "treasuryPartnerContext": {
+                        "achCoId": "4161803583"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/treasury-partners/{id}": {
+      "get": {
+        "tags": [
+          "Treasury Partners"
+        ],
+        "summary": "Get Treasury Partner",
+        "description": "Get detailed information of a Transfer Partner by its UUID.",
+        "operationId": "getTreasuryPartner",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Treasury Partner",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TreasuryPartner"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/treasury-partners/63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "treasury-partners"
+                    }
+                  },
+                  "id": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                  "name": "J.P. Morgan"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/treasury-partners": {
+      "get": {
+        "tags": [
+          "Treasury Partners"
+        ],
+        "summary": "List Treasury Partners",
+        "description": "List all Transfer Partners that Dwolla currently supports.",
+        "operationId": "listTreasuryPartners",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TreasuryPartners"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/treasury-partners",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "treasury-partners"
+                    }
+                  },
+                  "_embedded": {
+                    "treasury-partners": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/treasury-partners/63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "treasury-partners"
+                          }
+                        },
+                        "id": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
+                        "name": "J.P. Morgan"
+                      },
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/treasury-partners/50a1a90b-c960-4c9f-bfb3-15a91ba0df60",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "treasury-partners"
+                          }
+                        },
+                        "id": "50a1a90b-c960-4c9f-bfb3-15a91ba0df60",
+                        "name": "Wells Fargo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "HalLink": {
+        "title": "HalLink",
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "resource-type": {
+            "type": "string"
+          }
+        }
+      },
+      "Root": {
+        "title": "Root",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          }
+        }
+      },
+      "CreateFundingSourceForAccountRequestBody": {
+        "title": "CreateFundingSourceForAccountRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "treasury-account": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "bankAccountType": {
+            "type": "string",
+            "enum": [
+              "checking",
+              "savings"
+            ]
+          },
+          "accountNumber": {
+            "type": "string"
+          },
+          "routingNumber": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "bankAccountType",
+          "accountNumber",
+          "routingNumber"
+        ]
+      },
+      "FundingSource": {
+        "title": "FundingSource",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bankAccountType": {
+            "type": "string",
+            "enum": [
+              "checking",
+              "savings"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "FundingSources": {
+        "title": "FundingSources",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "funding-sources": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/FundingSource"
+                }
+              }
+            }
+          }
+        }
+      },
+      "BusinessExternalParty": {
+        "title": "BusinessExternalParty",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "businessName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "externalPartyType": {
+            "type": "string",
+            "enum": [
+              "business"
+            ]
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "PersonalExternalParty": {
+        "title": "PersonalExternalParty",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "externalPartyType": {
+            "type": "string",
+            "enum": [
+              "personal"
+            ]
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ExternalParty": {
+        "title": "ExternalParty",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BusinessExternalParty"
+          },
+          {
+            "$ref": "#/components/schemas/PersonalExternalParty"
+          }
+        ]
+      },
+      "ExternalParties": {
+        "title": "ExternalParties",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "external-parties": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExternalParty"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateBusinessExternalPartyRequestBody": {
+        "title": "CreateBusinessExternalPartyRequestBody",
+        "type": "object",
+        "properties": {
+          "businessName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "businessName",
+          "email"
+        ]
+      },
+      "CreatePersonalExternalBodyRequestBody": {
+        "title": "CreatePersonalExternalBodyRequestBody",
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          }
+        },
+        "required": [
+          "firstName",
+          "lastName",
+          "email"
+        ]
+      },
+      "CreateExternalPartyRequestBody": {
+        "title": "CreateExternalPartyRequestBody",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateBusinessExternalPartyRequestBody"
+          },
+          {
+            "$ref": "#/components/schemas/CreatePersonalExternalBodyRequestBody"
+          }
+        ]
+      },
+      "CreateFundingSourceForExternalPartyRequestBody": {
+        "title": "CreateFundingSourceForExternalPartyRequestBody",
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "bankAccountType": {
+            "type": "string",
+            "enum": [
+              "checking",
+              "savings"
+            ]
+          },
+          "accountNumber": {
+            "type": "string"
+          },
+          "routingNumber": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "bankAccountType",
+          "accountNumber",
+          "routingNumber"
+        ]
+      },
+      "Amount": {
+        "title": "Amount",
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "enum": [
+              "USD"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "CreateTransferRequestBody": {
+        "title": "CreateTransferRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "href"
+                ]
+              },
+              "destination": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "href"
+                ]
+              }
+            },
+            "required": [
+              "source",
+              "destination"
+            ]
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          }
+        },
+        "required": [
+          "_links",
+          "amount"
+        ]
+      },
+      "Transfer": {
+        "title": "Transfer",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "transferType": {
+            "type": "string",
+            "enum": [
+              "credit",
+              "debit"
+            ]
+          },
+          "transferStatus": {
+            "type": "string",
+            "enum": [
+              "created",
+              "pending",
+              "processed",
+              "failed"
+            ]
+          }
+        }
+      },
+      "TreasuryPartnerContextJPM": {
+        "title": "TreasuryPartnerContextJPM",
+        "type": "object",
+        "properties": {
+          "achCoId": {
+            "type": "string"
+          }
+        }
+      },
+      "TreasuryPartnerContextWF": {
+        "title": "TreasuryPartnerContextWF",
+        "type": "object",
+        "properties": {
+          "gatewayCompanyId": {
+            "type": "string"
+          }
+        }
+      },
+      "TreasuryAccount": {
+        "title": "TreasuryAccount",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "accountId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "treasuryPartnerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "treasuryPartnerContext": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TreasuryPartnerContextJPM"
+              },
+              {
+                "$ref": "#/components/schemas/TreasuryPartnerContextWF"
+              }
+            ]
+          }
+        }
+      },
+      "TreasuryAccounts": {
+        "title": "TreasuryAccounts",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "treasury-accounts": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TreasuryAccount"
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateTreasuryAccountRequestBody": {
+        "title": "CreateTreasuryAccountRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "treasuryPartner": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "href"
+                ]
+              }
+            },
+            "required": [
+              "treasuryPartner"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "treasuryPartnerContext": {
+            "oneOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TreasuryPartnerContextJPM"
+                  },
+                  {
+                    "required": [
+                      "achCoId"
+                    ]
+                  }
+                ]
+              },
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/TreasuryPartnerContextWF"
+                  },
+                  {
+                    "required": [
+                      "gatewayCompanyId"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "required": [
+          "_links",
+          "name",
+          "treasuryPartnerContext"
+        ]
+      },
+      "TreasuryPartner": {
+        "title": "TreasuryPartner",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "TreasuryPartners": {
+        "title": "TreasuryPartners",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "treasury-partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/TreasuryPartner"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "headers": {
+      "Location": {
+        "description": "URL of the successfully created resource",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
