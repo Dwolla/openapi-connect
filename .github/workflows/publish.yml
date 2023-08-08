@@ -1,0 +1,31 @@
+name: Publish Docs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Bundle OAS into single file
+        run: npx @redocly/cli@latest bundle spec.json --ext=json -o build/bundled
+
+      - name: Build Redocly HTML
+        run: npx @redocly/cli@latest build-docs build/bundled.json -o build/docs.html
+
+      - name: Deploy to GH Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          BRANCH: gh-pages
+          CLEAN: true
+          FOLDER: build
