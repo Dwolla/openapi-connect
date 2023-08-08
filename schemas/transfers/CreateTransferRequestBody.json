@@ -36,9 +36,6 @@
       },
       "amount": {
         "$ref": "../common.json#/components/schemas/Amount"
-      },
-      "correlationId": {
-        "type": "string"
       }
     },
     "required": [
