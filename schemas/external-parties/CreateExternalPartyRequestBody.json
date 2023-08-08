@@ -20,9 +20,6 @@
       "email": {
         "type": "string",
         "format": "email"
-      },
-      "correlationId": {
-        "type": "string"
       }
     },
     "required": [
@@ -43,9 +40,6 @@
       "email": {
         "type": "string",
         "format": "email"
-      },
-      "correlationId": {
-        "type": "string"
       }
     },
     "required": [
