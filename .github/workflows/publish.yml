@@ -21,7 +21,7 @@ jobs:
         run: npx @redocly/cli@latest bundle spec.json --ext=json -o build/bundled
 
       - name: Build Redocly HTML
-        run: npx @redocly/cli@latest build-docs build/bundled.json -o build/docs.html
+        run: npx @redocly/cli@latest build-docs build/bundled.json -o build/index.html
 
       - name: Deploy to GH Pages
         uses: JamesIves/github-pages-deploy-action@v4
