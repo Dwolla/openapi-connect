@@ -34,6 +34,13 @@
           "processed",
           "failed"
         ]
+      },
+      "processingChannel": {
+        "type": "string",
+        "enum": [
+          "ach",
+          "wire"
+        ]
       }
     }
   }

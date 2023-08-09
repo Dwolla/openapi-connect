@@ -51,7 +51,8 @@
                 "currency": "USD"
               },
               "transferType": "credit",
-              "transferStatus": "created"
+              "transferStatus": "created",
+              "processingChannel": "ach"
             }
           }
         }

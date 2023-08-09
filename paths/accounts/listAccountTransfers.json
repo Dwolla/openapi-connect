@@ -1,0 +1,76 @@
+{
+  "get": {
+    "tags": [
+      "Accounts",
+      "Transfers"
+    ],
+    "summary": "List Transfers for Account",
+    "description": "List all Transfers that have been created by your Main Account.",
+    "operationId": "listTransfersForAccount",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of Main Account",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/transfers/Transfers.json#/Transfers"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e/transfers",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "transfer"
+                }
+              },
+              "_embedded": {
+                "transfers": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/transfers/7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                      },
+                      "source-funding-source": {
+                        "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                      },
+                      "destination-funding-source": {
+                        "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                      }
+                    },
+                    "id": "7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                    "created": "2023-07-17T20:32:55.679Z",
+                    "amount": {
+                      "value": "10.00",
+                      "currency": "USD"
+                    },
+                    "transferType": "credit",
+                    "transferStatus": "created",
+                    "processingChannel": "ach"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

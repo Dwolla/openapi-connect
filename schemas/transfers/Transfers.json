@@ -1,0 +1,24 @@
+{
+  "Transfers": {
+    "title": "Transfers",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "transfers": {
+            "type": "array",
+            "items": {
+              "$ref": "./Transfer.json#/Transfer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

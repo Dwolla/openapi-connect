@@ -1,0 +1,46 @@
+{
+  "get": {
+    "tags": [
+      "Accounts"
+    ],
+    "summary": "Get Account",
+    "description": "Get Account by ID",
+    "operationId": "getAccount",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of Account",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/accounts/Account.json#/Account"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "account"
+                }
+              },
+              "id": "22926523-b517-43b9-959b-6ac4a422d71e",
+              "name": "Jim's Gems, LLC",
+              "created": "2023-07-13T19:08:16.378Z"
+            }
+          }
+        }
+      }
+    }
+  }
+}
