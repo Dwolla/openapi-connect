@@ -1,0 +1,18 @@
+{
+  "CreateWebhookSubscriptionRequestBody": {
+    "title": "CreateWebhookSubscriptionRequestBody",
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string"
+      },
+      "secret": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "url",
+      "secret"
+    ]
+  }
+}

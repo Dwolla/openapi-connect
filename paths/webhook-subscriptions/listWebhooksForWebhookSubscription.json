@@ -1,0 +1,114 @@
+{
+  "get": {
+    "tags": [
+      "Webhook Subscriptions"
+    ],
+    "summary": "List Webhooks for a Webhook Subscription",
+    "description": "List all Webhooks fired for a Webhook Subscriptions",
+    "operationId": "listWebhooksForWebhookSubscription",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of Webhook Subscription",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/webhook-subscriptions/Webhooks.json#/Webhooks"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook"
+                },
+                "next": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks?cursor=bGltaXQ9MjUmb2Zmc2V0PTUw",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook"
+                },
+                "prev": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks?cursor=bGltaXQ9MjUmb2Zmc2V0PTA=",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook"
+                }
+              },
+              "_embedded": {
+                "webhooks": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/webhooks/37090371-f163-48ab-b399-e3c40ba4c2d6",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "webhook"
+                      },
+                      "subscription": {
+                        "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "webhook-subscription"
+                      }
+                    },
+                    "id": "37090371-f163-48ab-b399-e3c40ba4c2d6",
+                    "topic": "external_party:funding_source:created",
+                    "accountId": "3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
+                    "eventId": "1fd9bb08-e96d-4ded-ad2a-84b2390ec12f",
+                    "subscriptionId": "6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                    "attempts": [
+                      {
+                        "id": "ff488f5f-0ae7-49a0-838b-a899d689e7f4",
+                        "request": {
+                          "timestamp": "2023-10-12T14:57:45.236Z",
+                          "url": "http://example.com/webhooks/4QYONM0C1N",
+                          "headers": [
+                            {
+                              "name": "Content-Length",
+                              "value": "642"
+                            },
+                            {
+                              "name": "Content-Type",
+                              "value": "application/json"
+                            },
+                            {
+                              "name": "User-Agent",
+                              "value": "dwolla-webhooks/1.1"
+                            },
+                            {
+                              "name": "X-Dwolla-Topic",
+                              "value": "external_party:funding_source:created"
+                            },
+                            {
+                              "name": "X-Request-Signature-SHA-256",
+                              "value": "3baccb0f5c1be8fb771259137c179a61926e8ce575efac2d2aefe6e54384081f"
+                            }
+                          ],
+                          "body": "{\"id\":\"1fd9bb08-e96d-4ded-ad2a-84b2390ec12f\",\"resourceId\":\"d0a73ee1-bbc3-4f53-8466-3e0295dea5c7\",\"topic\":\"external_party:funding_source:created\",\"timestamp\":\"2023-10-12T14:57:41.692Z\",\"_links\":{\"self\":{\"href\":\"https://api.dwolla.com/events/1fd9bb08-e96d-4ded-ad2a-84b2390ec12f\"},\"account\":{\"href\":\"https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1\"},\"resource\":{\"href\":\"https://api.dwolla.com/funding-sources/d0a73ee1-bbc3-4f53-8466-3e0295dea5c7\"},\"external-party\":{\"href\":\"https://api.dwolla.com/external-parties/1087d335-1a1a-4340-8107-2b512ee2c91c\"}},\"created\":\"2023-10-12T14:57:41.692Z\"}"
+                        },
+                        "responses": {
+                          "timestamp": "2023-10-12T14:57:45.583Z",
+                          "headers": [],
+                          "statusCode": 200,
+                          "body": ""
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

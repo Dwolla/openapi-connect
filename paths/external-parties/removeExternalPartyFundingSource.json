@@ -1,0 +1,66 @@
+{
+  "post": {
+    "tags": [
+      "External Parties",
+      "Funding Sources"
+    ],
+    "summary": "Remove a Funding Source belonging to an External Party",
+    "description": "Remove a Funding Source that is attached to an External Party.",
+    "operationId": "removeExternalPartyFundingSource",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of External Party",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/funding-sources/RemoveFundingSourceRequestBody.json#/RemoveFundingSourceRequestBody"
+          },
+          "example": {
+            "removed": true
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Ok",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/funding-sources/FundingSource.json#/FundingSource"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/funding-sources/2bb9b57a-cb45-4bd2-b8ff-e3a5644e0fb7",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
+                },
+                "treasury-account": {
+                  "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "treasury-account"
+                }
+              },
+              "id": "2bb9b57a-cb45-4bd2-b8ff-e3a5644e0fb7",
+              "bankAccountType": "checking",
+              "name": "My Savings Account",
+              "created": "2023-09-15T20:05:04.266Z",
+              "removed": "2023-09-15T20:06:06.560Z"
+            }
+          }
+        }
+      }
+    }
+  }
+}

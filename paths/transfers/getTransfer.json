@@ -33,10 +33,20 @@
                   "type": "application/vnd.dwolla.v1.hal+json",
                   "resource-type": "transfer"
                 },
+                "source": {
+                  "href": "https://api.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "account"
+                },
                 "source-funding-source": {
                   "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
                   "type": "application/vnd.dwolla.v1.hal+json",
                   "resource-type": "funding-source"
+                },
+                "destination": {
+                  "href": "https://api.dwolla.com/external-parties/d295106b-ca20-41ad-9774-286e34fd3c2d",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "customer"
                 },
                 "destination-funding-source": {
                   "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
@@ -50,9 +60,13 @@
                 "value": "10.00",
                 "currency": "USD"
               },
-              "transferType": "credit",
-              "transferStatus": "created",
-              "processingChannel": "ach"
+              "status": "failed",
+              "processingChannel": "ach",
+              "failureReason": {
+                "description": "Invalid combination of ACH company ID and funding source",
+                "code": "GCA-051",
+                "explanation": "The requested funding source and treasury account combination is invalid. Check funding source and treasury account for accuracy and re-add if necessary"
+              }
             }
           }
         }

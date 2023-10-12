@@ -16,7 +16,7 @@
           "example": {
             "_links": {
               "treasury-account": {
-                "href": "{{baseUrl}}/treasury-accounts/{{treasuryAccountId}}"
+                "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
               }
             },
             "name": "My Test Bank",

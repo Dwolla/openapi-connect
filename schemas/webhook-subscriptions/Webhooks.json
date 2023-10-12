@@ -1,0 +1,24 @@
+{
+  "Webhooks": {
+    "title": "Webhooks",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "webhooks": {
+            "type": "array",
+            "items": {
+              "$ref": "../webhooks/Webhook.json#/Webhook"
+            }
+          }
+        }
+      }
+    }
+  }
+}

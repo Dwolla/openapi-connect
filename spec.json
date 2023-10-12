@@ -53,8 +53,26 @@
     "/external-parties/{id}/funding-sources": {
       "$ref": "./paths/external-parties/createListFundingSources.json"
     },
+    "/external-parties/{id}/exchanges": {
+      "$ref": "./paths/exchanges/createListExchangesForExternalParty.json"
+    },
+    "/external-parties/{id}/transfers": {
+      "$ref": "./paths/external-parties/listExternalPartyTransfers.json"
+    },
     "/funding-sources/{id}": {
       "$ref": "./paths/funding-sources/getFundingSource.json"
+    },
+    "/exchange-partners": {
+      "$ref": "./paths/exchanges/listExchangePartners.json"
+    },
+    "/exchange-partners/{id}": {
+      "$ref": "./paths/exchanges/getExchangePartner.json"
+    },
+    "/exchanges": {
+      "$ref": "./paths/exchanges/createListExchangesForAccount.json"
+    },
+    "/exchanges/{id}": {
+      "$ref": "./paths/exchanges/getExchange.json"
     },
     "/transfers": {
       "$ref": "./paths/transfers/createTransfer.json"
@@ -73,6 +91,15 @@
     },
     "/treasury-partners": {
       "$ref": "./paths/treasury-partners/listTreasuryPartners.json"
+    },
+    "/webhook-subscriptions": {
+      "$ref": "./paths/webhook-subscriptions/createListWebhookSubscriptions.json"
+    },
+    "/webhook-subscriptions/{id}": {
+      "$ref": "./paths/webhook-subscriptions/getDeleteWebhookSubscription.json"
+    },
+    "/webhook-subscriptions/{id}/webhooks": {
+      "$ref": "./paths/webhook-subscriptions/listWebhooksForWebhookSubscription.json"
     }
   },
   "components": {

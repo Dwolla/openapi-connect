@@ -1,0 +1,102 @@
+{
+  "get": {
+    "tags": [
+      "Webhook Subscriptions"
+    ],
+    "summary": "Get Webhook Subscription",
+    "description": "Get a Webhook Subscription by ID",
+    "operationId": "getWebhookSubscriptions",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of Webhook Subscription",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/webhook-subscriptions/WebhookSubscription.json#/WebhookSubscription"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook-subscription"
+                },
+                "webhooks": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook"
+                }
+              },
+              "id": "6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+              "url": "http://myapplication.com/webhooks",
+              "paused": false,
+              "created": "2023-09-22T19:20:19.996Z"
+            }
+          }
+        }
+      }
+    }
+  },
+  "delete": {
+    "tags": [
+      "Webhook Subscriptions"
+    ],
+    "summary": "Delete a Webhook Subscription",
+    "description": "Delete a webhook subscription to stop receiving POST requests from Dwolla webhooks.",
+    "operationId": "deleteWebhookSubscription,",
+    "parameters": [
+      {
+        "in": "path",
+        "name": "id",
+        "description": "UUID of Webhook Subscription to delete",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "required": true
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/webhook-subscriptions/WebhookSubscription.json#/WebhookSubscription"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/94fae77b-9270-4cd3-9a25-9025ed380f20",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook-subscription"
+                },
+                "webhooks": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions/94fae77b-9270-4cd3-9a25-9025ed380f20/webhooks",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook"
+                }
+              },
+              "id": "94fae77b-9270-4cd3-9a25-9025ed380f20",
+              "url": "http://example.com/webhooks/4QYONM0C1N",
+              "paused": true,
+              "created": "2023-09-13T22:36:18.504Z"
+            }
+          }
+        }
+      }
+    }
+  }
+}

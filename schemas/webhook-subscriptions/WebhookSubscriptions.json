@@ -1,0 +1,28 @@
+{
+  "WebhookSubscriptions": {
+    "title": "WebhookSubscriptions",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "webhook-subscriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "./WebhookSubscription.json#/WebhookSubscription"
+            }
+          }
+        }
+      },
+      "total": {
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}
