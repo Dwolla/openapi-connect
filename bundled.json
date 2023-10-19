@@ -145,7 +145,7 @@
               "example": {
                 "_links": {
                   "treasury-account": {
-                    "href": "{{baseUrl}}/treasury-accounts/{{treasuryAccountId}}"
+                    "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
                   }
                 },
                 "name": "My Test Bank",
@@ -202,6 +202,16 @@
                       "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "account"
+                    },
+                    "transfers": {
+                      "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1/transfers",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
+                    },
+                    "funding-sources": {
+                      "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1/funding-sources",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
                     }
                   },
                   "id": "22926523-b517-43b9-959b-6ac4a422d71e",
@@ -269,7 +279,32 @@
                         "id": "f815137a-f7b1-432b-976b-e52832ede996",
                         "bankAccountType": "checking",
                         "name": "My Test Bank",
-                        "created": "2023-07-17T18:04:24.772Z"
+                        "created": "2023-07-17T18:04:24.772Z",
+                        "removed": false
+                      },
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          },
+                          "treasury-account": {
+                            "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "treasury-account"
+                          },
+                          "remove": {
+                            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "9062c625-2094-47ed-9d1f-f40315e4bea7",
+                        "bankAccountType": "checking",
+                        "name": "My Test Bank",
+                        "created": "2023-09-15T18:50:34.866Z",
+                        "removed": false
                       }
                     ]
                   }
@@ -315,37 +350,61 @@
                       "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e/transfers",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "transfer"
+                    },
+                    "next": {
+                      "href": "https://api.dwolla.com/transfers?cursor=pkRCuXGXtIXuX4lYR3rxzsOAUzB4xs-aJwCztcz2i2f5-C8M4NhitjEfPGdJsTSit6eKVvTtS5KQ32dl3Urq1ukwYrz0ebXtYaJGJQNlFJ0mUruIRmaMqbBj-5UKl3piqzoGwdIUjw3_umKrJUC8obrSOlAbSoNu5N7ANPc8tIKiKHfYJVLHcVeuV7EbCYDmBByXHFSP0TIEtRJwP_FV_o4V6gdcBSJpRq2EIYN7qPC9FJtTvYMcvPZH6KnEiziq_A04jhftCmU1pTabEnpNMLha2ZkXghZuk64Fpy49MugYH94itx5skcYr1ANatYycKKpUgKGhdfXMLyV1V3iDAG-y3NDd6cfvuC-2DonZ2xF5TklF8MzRkbTnOnstpF5t",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
+                    },
+                    "prev": {
+                      "href": "https://api.dwolla.com/transfers?cursor=O3kLyIi9uBjF7vAzYtPQHw6dRzWVG1EH2nMxUCqrpXv2Sg8fLbDPXzmTx1eAhiW5g4nRvZKGoLIBMyteWaYolTq3vG7F1pDloFtJiKjh2lLyG5QU9XZdoxrMls4PXalchYknZ-Db6NRAFow3H2GWWTf5vWuLpEZlIyGKOTXRdr7hK0CL3Rzw-Qnq7OkDHp1zVG12fbKYTp4YloTg7Ss4ENInU-AJihbzmMj0D3Ly1zXqHVRp6v3uIaEBdljhPfNISreQrz8XPkBSARjqBv0zGusvZJeaTQMbUo7e8SgG9V6HbYkWQcWQvK9U2CxG9VBDi6eTyVXuZoFc1w9uSgAoc2UCMg2eBvwY-KbLyw7PzqDLN3bMiHkYlxRCbSd0kN7E",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
                     }
                   },
                   "_embedded": {
                     "transfers": [
                       {
                         "_links": {
+                          "source": {
+                            "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "account"
+                          },
+                          "destination-funding-source": {
+                            "href": "https://api.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          },
                           "self": {
-                            "href": "https://api.dwolla.com/transfers/7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                            "href": "https://api.dwolla.com/transfers/be226616-bf05-4316-8ecb-fac1ac89c9f3",
                             "type": "application/vnd.dwolla.v1.hal+json",
                             "resource-type": "transfer"
                           },
                           "source-funding-source": {
-                            "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
+                            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
                             "type": "application/vnd.dwolla.v1.hal+json",
                             "resource-type": "funding-source"
                           },
-                          "destination-funding-source": {
-                            "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
+                          "destination": {
+                            "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
                             "type": "application/vnd.dwolla.v1.hal+json",
-                            "resource-type": "funding-source"
+                            "resource-type": "account"
                           }
                         },
-                        "id": "7a6a0c6f-a849-431e-8288-0f89c85c9d55",
-                        "created": "2023-07-17T20:32:55.679Z",
+                        "id": "be226616-bf05-4316-8ecb-fac1ac89c9f3",
+                        "created": "2023-09-27T15:42:59.394Z",
                         "amount": {
-                          "value": "10.00",
+                          "value": "5.12",
                           "currency": "USD"
                         },
-                        "transferType": "credit",
-                        "transferStatus": "created",
-                        "processingChannel": "ach"
+                        "status": "failed",
+                        "processingChannel": "ach",
+                        "failureReason": {
+                          "description": "Invalid combination of ACH company ID and funding source",
+                          "code": "GCA-051",
+                          "explanation": "The requested funding source and treasury account combination is invalid. Check funding source and treasury account for accuracy and re-add if necessary"
+                        }
                       }
                     ]
                   }
@@ -420,6 +479,16 @@
                       "href": "https://api.dwolla.com/external-parties",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "external-party"
+                    },
+                    "next": {
+                      "href": "https://api.dwolla.com/transfers?cursor=pkRCuXGXtIXuX4lYR3rxzsOAUzB4xs-aJwCztcz2i2f5-C8M4NhitjEfPGdJsTSit6eKVvTtS5KQ32dl3Urq1ukwYrz0ebXtYaJGJQNlFJ0mUruIRmaMqbBj-5UKl3piqzoGwdIUjw3_umKrJUC8obrSOlAbSoNu5N7ANPc8tIKiKHfYJVLHcVeuV7EbCYDmBByXHFSP0TIEtRJwP_FV_o4V6gdcBSJpRq2EIYN7qPC9FJtTvYMcvPZH6KnEiziq_A04jhftCmU1pTabEnpNMLha2ZkXghZuk64Fpy49MugYH94itx5skcYr1ANatYycKKpUgKGhdfXMLyV1V3iDAG-y3NDd6cfvuC-2DonZ2xF5TklF8MzRkbTnOnstpF5t",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "external-party"
+                    },
+                    "prev": {
+                      "href": "https://api.dwolla.com/transfers?cursor=O3kLyIi9uBjF7vAzYtPQHw6dRzWVG1EH2nMxUCqrpXv2Sg8fLbDPXzmTx1eAhiW5g4nRvZKGoLIBMyteWaYolTq3vG7F1pDloFtJiKjh2lLyG5QU9XZdoxrMls4PXalchYknZ-Db6NRAFow3H2GWWTf5vWuLpEZlIyGKOTXRdr7hK0CL3Rzw-Qnq7OkDHp1zVG12fbKYTp4YloTg7Ss4ENInU-AJihbzmMj0D3Ly1zXqHVRp6v3uIaEBdljhPfNISreQrz8XPkBSARjqBv0zGusvZJeaTQMbUo7e8SgG9V6HbYkWQcWQvK9U2CxG9VBDi6eTyVXuZoFc1w9uSgAoc2UCMg2eBvwY-KbLyw7PzqDLN3bMiHkYlxRCbSd0kN7E",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "external-party"
                     }
                   },
                   "_embedded": {
@@ -468,7 +537,7 @@
           "External Parties"
         ],
         "summary": "Get External Party",
-        "description": "Get an External Party by ID",
+        "description": "Retrieve basic deails about an exernal party by ID.",
         "operationId": "getExternalParty",
         "parameters": [
           {
@@ -558,11 +627,26 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateFundingSourceForExternalPartyRequestBody"
               },
-              "example": {
-                "name": "Test Bank",
-                "bankAccountType": "checking",
-                "accountNumber": "123456789",
-                "routingNumber": "222222226"
+              "examples": {
+                "Bank Funding Source": {
+                  "value": {
+                    "name": "Test Bank",
+                    "bankAccountType": "checking",
+                    "accountNumber": "123456789",
+                    "routingNumber": "222222226"
+                  }
+                },
+                "Exchange Funding Source": {
+                  "value": {
+                    "_links": {
+                      "exchange": {
+                        "href": "https://api.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+                      }
+                    },
+                    "bankAccountType": "checking",
+                    "name": "Jane Doe - Checking"
+                  }
+                }
               }
             }
           }
@@ -612,10 +696,43 @@
                       "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae/funding-sources",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "funding-source"
+                    },
+                    "next": {
+                      "href": "https://api.dwolla.com/transfers?cursor=pkRCuXGXtIXuX4lYR3rxzsOAUzB4xs-aJwCztcz2i2f5-C8M4NhitjEfPGdJsTSit6eKVvTtS5KQ32dl3Urq1ukwYrz0ebXtYaJGJQNlFJ0mUruIRmaMqbBj-5UKl3piqzoGwdIUjw3_umKrJUC8obrSOlAbSoNu5N7ANPc8tIKiKHfYJVLHcVeuV7EbCYDmBByXHFSP0TIEtRJwP_FV_o4V6gdcBSJpRq2EIYN7qPC9FJtTvYMcvPZH6KnEiziq_A04jhftCmU1pTabEnpNMLha2ZkXghZuk64Fpy49MugYH94itx5skcYr1ANatYycKKpUgKGhdfXMLyV1V3iDAG-y3NDd6cfvuC-2DonZ2xF5TklF8MzRkbTnOnstpF5t",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    },
+                    "prev": {
+                      "href": "https://api.dwolla.com/transfers?cursor=O3kLyIi9uBjF7vAzYtPQHw6dRzWVG1EH2nMxUCqrpXv2Sg8fLbDPXzmTx1eAhiW5g4nRvZKGoLIBMyteWaYolTq3vG7F1pDloFtJiKjh2lLyG5QU9XZdoxrMls4PXalchYknZ-Db6NRAFow3H2GWWTf5vWuLpEZlIyGKOTXRdr7hK0CL3Rzw-Qnq7OkDHp1zVG12fbKYTp4YloTg7Ss4ENInU-AJihbzmMj0D3Ly1zXqHVRp6v3uIaEBdljhPfNISreQrz8XPkBSARjqBv0zGusvZJeaTQMbUo7e8SgG9V6HbYkWQcWQvK9U2CxG9VBDi6eTyVXuZoFc1w9uSgAoc2UCMg2eBvwY-KbLyw7PzqDLN3bMiHkYlxRCbSd0kN7E",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
                     }
                   },
                   "_embedded": {
                     "funding-sources": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/funding-sources/d0a73ee1-bbc3-4f53-8466-3e0295dea5c7",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          },
+                          "external-party": {
+                            "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "external-party"
+                          },
+                          "remove": {
+                            "href": "https://api.dwolla.com/funding-sources/d0a73ee1-bbc3-4f53-8466-3e0295dea5c7",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "d0a73ee1-bbc3-4f53-8466-3e0295dea5c7",
+                        "bankAccountType": "checking",
+                        "name": "Test Bank",
+                        "created": "2023-07-15T17:52:37.211Z"
+                      },
                       {
                         "_links": {
                           "self": {
@@ -632,7 +749,225 @@
                         "id": "9bb42992-a03b-422d-8c52-82b14828dbac",
                         "bankAccountType": "checking",
                         "name": "Test Bank",
-                        "created": "2023-07-15T17:52:37.211Z"
+                        "created": "2023-07-15T17:52:37.211Z",
+                        "removed": false
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external-parties/{id}/exchanges": {
+      "post": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "Create exchange for an External Party",
+        "description": "Create exchange for an External Party",
+        "operationId": "createExchangeForExternalParty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of External Party",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateFinicityExchangeRequestBody"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateMXExchangeRequestBody"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "List exchanges for an External Party",
+        "description": "List exchanges for an External Party",
+        "operationId": "listExchangesForExternalParty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of External Party",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "headers": {},
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exchanges"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/exchanges",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "exchange"
+                    }
+                  },
+                  "_embedded": {
+                    "exchanges": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange"
+                          },
+                          "exchange-partner": {
+                            "href": "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange-partner"
+                          },
+                          "funding-sources": {
+                            "href": "https://api.dwolla.com/funding-sources",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                        "status": "active",
+                        "created": "2022-10-19T17:44:44.864Z"
+                      }
+                    ]
+                  },
+                  "total": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external-parties/{id}/transfers": {
+      "get": {
+        "tags": [
+          "External Parties",
+          "Transfers"
+        ],
+        "summary": "List Transfers for External Party",
+        "description": "List all Transfers that that belong to an External Party.",
+        "operationId": "listTransfersForExternalParty",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of External Party",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transfers"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/external-parties/22926523-b517-43b9-959b-6ac4a422d71e/transfers",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
+                    },
+                    "next": {
+                      "href": "https://api.dwolla.com/transfers?cursor=pkRCuXGXtIXuX4lYR3rxzsOAUzB4xs-aJwCztcz2i2f5-C8M4NhitjEfPGdJsTSit6eKVvTtS5KQ32dl3Urq1ukwYrz0ebXtYaJGJQNlFJ0mUruIRmaMqbBj-5UKl3piqzoGwdIUjw3_umKrJUC8obrSOlAbSoNu5N7ANPc8tIKiKHfYJVLHcVeuV7EbCYDmBByXHFSP0TIEtRJwP_FV_o4V6gdcBSJpRq2EIYN7qPC9FJtTvYMcvPZH6KnEiziq_A04jhftCmU1pTabEnpNMLha2ZkXghZuk64Fpy49MugYH94itx5skcYr1ANatYycKKpUgKGhdfXMLyV1V3iDAG-y3NDd6cfvuC-2DonZ2xF5TklF8MzRkbTnOnstpF5t",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
+                    },
+                    "prev": {
+                      "href": "https://api.dwolla.com/transfers?cursor=O3kLyIi9uBjF7vAzYtPQHw6dRzWVG1EH2nMxUCqrpXv2Sg8fLbDPXzmTx1eAhiW5g4nRvZKGoLIBMyteWaYolTq3vG7F1pDloFtJiKjh2lLyG5QU9XZdoxrMls4PXalchYknZ-Db6NRAFow3H2GWWTf5vWuLpEZlIyGKOTXRdr7hK0CL3Rzw-Qnq7OkDHp1zVG12fbKYTp4YloTg7Ss4ENInU-AJihbzmMj0D3Ly1zXqHVRp6v3uIaEBdljhPfNISreQrz8XPkBSARjqBv0zGusvZJeaTQMbUo7e8SgG9V6HbYkWQcWQvK9U2CxG9VBDi6eTyVXuZoFc1w9uSgAoc2UCMg2eBvwY-KbLyw7PzqDLN3bMiHkYlxRCbSd0kN7E",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "transfer"
+                    }
+                  },
+                  "_embedded": {
+                    "transfers": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/transfers/7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "transfer"
+                          },
+                          "source": {
+                            "href": "https://api.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "account"
+                          },
+                          "source-funding-source": {
+                            "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          },
+                          "destination": {
+                            "href": "https://api.dwolla.com/external-parties/d295106b-ca20-41ad-9774-286e34fd3c2d",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "customer"
+                          },
+                          "destination-funding-source": {
+                            "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                        "created": "2023-07-17T20:32:55.679Z",
+                        "amount": {
+                          "value": "10.00",
+                          "currency": "USD"
+                        },
+                        "status": "failed",
+                        "processingChannel": "ach",
+                        "failureReason": {
+                          "description": "Invalid combination of ACH company ID and funding source",
+                          "code": "GCA-051",
+                          "explanation": "The requested funding source and treasury account combination is invalid. Check funding source and treasury account for accuracy and re-add if necessary"
+                        }
                       }
                     ]
                   }
@@ -682,12 +1017,305 @@
                       "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "external-party"
+                    },
+                    "remove": {
+                      "href": "https://api.dwolla.com/funding-sources/9bb42992-a03b-422d-8c52-82b14828dbac",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
                     }
                   },
                   "id": "9bb42992-a03b-422d-8c52-82b14828dbac",
                   "bankAccountType": "checking",
                   "name": "Dwolla Bank",
                   "created": "2023-07-15T17:52:37.211Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchange-partners": {
+      "get": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "List exchange partners",
+        "description": "List exchange partners",
+        "operationId": "listExchangePartners",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangePartners"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/exchange-partners",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "exchange-partner"
+                    }
+                  },
+                  "_embedded": {
+                    "exchange-partners": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange-partner"
+                          },
+                          "funding-source": {
+                            "href": "https://api.dwolla.com/funding-sources",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "292317ec-e252-47d8-93c3-2d128e037aa4",
+                        "name": "Finicity",
+                        "status": "active",
+                        "created": "2022-05-17T16:08:52.146Z"
+                      },
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/exchange-partners/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange-partner"
+                          },
+                          "funding-source": {
+                            "href": "https://api.dwolla.com/funding-sources",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                        "name": "MX",
+                        "status": "active",
+                        "created": "2022-08-30T19:31:59.106Z"
+                      },
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange-partner"
+                          },
+                          "funding-source": {
+                            "href": "https://api.dwolla.com/funding-sources",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "a0b22a57-68df-4450-b507-47c937e64e89",
+                        "name": "Flinks",
+                        "status": "active",
+                        "created": "2023-05-15T14:43:47.615Z"
+                      }
+                    ]
+                  },
+                  "total": 3
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchange-partners/{id}": {
+      "get": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "Retrieve exchange partner",
+        "description": "Retrieve exchange partner",
+        "operationId": "getExchangePartner",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Exchange Partner resource unique identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "292317ec-e252-47d8-93c3-2d128e037aa4"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "headers": {},
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExchangePartner"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/exchange-partners/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "exchange-partner"
+                    },
+                    "funding-source": {
+                      "href": "https://api.dwolla.com/funding-sources",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "funding-source"
+                    }
+                  },
+                  "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                  "name": "MX",
+                  "status": "active",
+                  "created": "2023-09-30T19:31:59.106Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchanges": {
+      "post": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "Create exchange for an Account",
+        "description": "Create exchange for an Account",
+        "operationId": "createExchangeForAccount",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/CreateFinicityExchangeRequestBody"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CreateMXExchangeRequestBody"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "List exchanges for an Account",
+        "description": "List exchanges for an Account",
+        "operationId": "listExchangesForAccount",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "headers": {},
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exchanges"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/exchanges",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "exchange"
+                    }
+                  },
+                  "_embedded": {
+                    "exchanges": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://apidwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange"
+                          },
+                          "exchange-partner": {
+                            "href": "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "exchange-partner"
+                          },
+                          "funding-sources": {
+                            "href": "https://api.dwolla.com/funding-sources",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "funding-source"
+                          }
+                        },
+                        "id": "92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                        "status": "active",
+                        "created": "2022-10-19T17:44:44.864Z"
+                      }
+                    ]
+                  },
+                  "total": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/exchanges/{id}": {
+      "get": {
+        "tags": [
+          "Exchanges"
+        ],
+        "summary": "Retrieve exchange resource",
+        "description": "Retrieve exchange resource",
+        "operationId": "getExchangeResource",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "UUID of Exchange resource",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "292317ec-e252-47d8-93c3-2d128e037aa4"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exchange"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "exchange"
+                    },
+                    "exchange-partner": {
+                      "href": "https://api.dwolla.com/exchange-partners/9b55a4b3-34ae-4607-b2d1-622f1eed77f9",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "exchange-partner"
+                    }
+                  },
+                  "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                  "status": "active",
+                  "created": "2023-09-21T21:41:03.283Z"
                 }
               }
             }
@@ -712,10 +1340,10 @@
               "example": {
                 "_links": {
                   "source": {
-                    "href": "https://api.dwolla.com/funding-sources/{{sourceFundingSourceId}}"
+                    "href": "https://api.dwolla.com/funding-sources/cdc9c38f-6350-48c1-8fe0-6335145a502c"
                   },
                   "destination": {
-                    "href": "https://api.dwolla.com/funding-sources/{{destinationFundingSourceId}}"
+                    "href": "https://api.dwolla.com/funding-sources/f5ac7b1f-45c7-4ba2-8c5c-8cd7541261be"
                   }
                 },
                 "amount": {
@@ -773,10 +1401,20 @@
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "transfer"
                     },
+                    "source": {
+                      "href": "https://api.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "account"
+                    },
                     "source-funding-source": {
                       "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "funding-source"
+                    },
+                    "destination": {
+                      "href": "https://api.dwolla.com/external-parties/d295106b-ca20-41ad-9774-286e34fd3c2d",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "customer"
                     },
                     "destination-funding-source": {
                       "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
@@ -790,9 +1428,13 @@
                     "value": "10.00",
                     "currency": "USD"
                   },
-                  "transferType": "credit",
-                  "transferStatus": "created",
-                  "processingChannel": "ach"
+                  "status": "failed",
+                  "processingChannel": "ach",
+                  "failureReason": {
+                    "description": "Invalid combination of ACH company ID and funding source",
+                    "code": "GCA-051",
+                    "explanation": "The requested funding source and treasury account combination is invalid. Check funding source and treasury account for accuracy and re-add if necessary"
+                  }
                 }
               }
             }
@@ -819,7 +1461,7 @@
                   "value": {
                     "_links": {
                       "treasuryPartner": {
-                        "href": "https://api.dwolla.com/treasury-partners/{{treasuryPartnerId}}"
+                        "href": "https://api.dwolla.com/treasury-partners/eefc6eb3-1ffe-417a-aac1-1462ef762759"
                       }
                     },
                     "name": "My JPM Account",
@@ -874,13 +1516,21 @@
                             "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
                             "type": "application/vnd.dwolla.v1.hal+json",
                             "resource-type": "treasury-account"
+                          },
+                          "treasury-partner": {
+                            "href": "https://api.dwolla.com/treasury-partners/eefc6eb3-1ffe-417a-aac1-1462ef762759",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "treasury-partners"
+                          },
+                          "account": {
+                            "href": "https://api.dwolla.com/accounts/d4a0876f-642e-478b-b684-bfb8632c5937",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "account"
                           }
                         },
                         "id": "e60d1372-f398-4c03-b4e7-499a4a7f8b27",
                         "name": "Test JPM Account",
                         "created": "2023-07-14T19:16:46.694Z",
-                        "accountId": "22926523-b517-43b9-959b-6ac4a422d71e",
-                        "treasuryPartnerId": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
                         "treasuryPartnerContext": {
                           "achCoId": "4161803583"
                         }
@@ -930,13 +1580,21 @@
                           "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
                           "type": "application/vnd.dwolla.v1.hal+json",
                           "resource-type": "treasury-account"
+                        },
+                        "treasury-partner": {
+                          "href": "https://api.dwolla.com/treasury-partners/eefc6eb3-1ffe-417a-aac1-1462ef762759",
+                          "type": "application/vnd.dwolla.v1.hal+json",
+                          "resource-type": "treasury-partners"
+                        },
+                        "account": {
+                          "href": "https://api.dwolla.com/accounts/d4a0876f-642e-478b-b684-bfb8632c5937",
+                          "type": "application/vnd.dwolla.v1.hal+json",
+                          "resource-type": "account"
                         }
                       },
                       "id": "e60d1372-f398-4c03-b4e7-499a4a7f8b27",
                       "name": "My JPM Account",
                       "created": "2023-07-14T19:16:46.694Z",
-                      "accountId": "22926523-b517-43b9-959b-6ac4a422d71e",
-                      "treasuryPartnerId": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
                       "treasuryPartnerContext": {
                         "achCoId": "4161803583"
                       }
@@ -1041,6 +1699,307 @@
                         },
                         "id": "50a1a90b-c960-4c9f-bfb3-15a91ba0df60",
                         "name": "Wells Fargo"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhook-subscriptions": {
+      "post": {
+        "tags": [
+          "Webhook Subscriptions"
+        ],
+        "summary": "Create a Webhook Subscription",
+        "description": "Create a webhook subscription to receive POST requests from Dwolla (called webhooks) when events associated with your application occur.",
+        "operationId": "createWebhookSubscription",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookSubscriptionRequestBody"
+              },
+              "example": {
+                "url": "http://myapplication.com/webhooks",
+                "secret": "sshhhhhh"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "$ref": "#/components/headers/Location"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Webhook Subscriptions"
+        ],
+        "summary": "List Webhook Subscriptions",
+        "description": "List all Webhook Subscriptions that belong to an application.",
+        "operationId": "listWebhookSubscriptions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookSubscriptions"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook-subscription"
+                    }
+                  },
+                  "_embedded": {
+                    "webhook-subscriptions": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "webhook-subscription"
+                          },
+                          "webhooks": {
+                            "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "webhook"
+                          }
+                        },
+                        "id": "6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                        "url": "http://myapplication.com/webhooks",
+                        "paused": false,
+                        "created": "2023-09-22T19:20:19.996Z"
+                      }
+                    ]
+                  },
+                  "total": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhook-subscriptions/{id}": {
+      "get": {
+        "tags": [
+          "Webhook Subscriptions"
+        ],
+        "summary": "Get Webhook Subscription",
+        "description": "Get a Webhook Subscription by ID",
+        "operationId": "getWebhookSubscriptions",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Webhook Subscription",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookSubscription"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook-subscription"
+                    },
+                    "webhooks": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook"
+                    }
+                  },
+                  "id": "6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                  "url": "http://myapplication.com/webhooks",
+                  "paused": false,
+                  "created": "2023-09-22T19:20:19.996Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Webhook Subscriptions"
+        ],
+        "summary": "Delete a Webhook Subscription",
+        "description": "Delete a webhook subscription to stop receiving POST requests from Dwolla webhooks.",
+        "operationId": "deleteWebhookSubscription,",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Webhook Subscription to delete",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WebhookSubscription"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/94fae77b-9270-4cd3-9a25-9025ed380f20",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook-subscription"
+                    },
+                    "webhooks": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/94fae77b-9270-4cd3-9a25-9025ed380f20/webhooks",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook"
+                    }
+                  },
+                  "id": "94fae77b-9270-4cd3-9a25-9025ed380f20",
+                  "url": "http://example.com/webhooks/4QYONM0C1N",
+                  "paused": true,
+                  "created": "2023-09-13T22:36:18.504Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/webhook-subscriptions/{id}/webhooks": {
+      "get": {
+        "tags": [
+          "Webhook Subscriptions"
+        ],
+        "summary": "List Webhooks for a Webhook Subscription",
+        "description": "List all Webhooks fired for a Webhook Subscriptions",
+        "operationId": "listWebhooksForWebhookSubscription",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "UUID of Webhook Subscription",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/vnd.dwolla.v1.hal+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Webhooks"
+                },
+                "example": {
+                  "_links": {
+                    "self": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook"
+                    },
+                    "next": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks?cursor=bGltaXQ9MjUmb2Zmc2V0PTUw",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook"
+                    },
+                    "prev": {
+                      "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks?cursor=bGltaXQ9MjUmb2Zmc2V0PTA=",
+                      "type": "application/vnd.dwolla.v1.hal+json",
+                      "resource-type": "webhook"
+                    }
+                  },
+                  "_embedded": {
+                    "webhooks": [
+                      {
+                        "_links": {
+                          "self": {
+                            "href": "https://api.dwolla.com/webhooks/37090371-f163-48ab-b399-e3c40ba4c2d6",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "webhook"
+                          },
+                          "subscription": {
+                            "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                            "type": "application/vnd.dwolla.v1.hal+json",
+                            "resource-type": "webhook-subscription"
+                          }
+                        },
+                        "id": "37090371-f163-48ab-b399-e3c40ba4c2d6",
+                        "topic": "external_party:funding_source:created",
+                        "accountId": "3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
+                        "eventId": "1fd9bb08-e96d-4ded-ad2a-84b2390ec12f",
+                        "subscriptionId": "6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                        "attempts": [
+                          {
+                            "id": "ff488f5f-0ae7-49a0-838b-a899d689e7f4",
+                            "request": {
+                              "timestamp": "2023-10-12T14:57:45.236Z",
+                              "url": "http://example.com/webhooks/4QYONM0C1N",
+                              "headers": [
+                                {
+                                  "name": "Content-Length",
+                                  "value": "642"
+                                },
+                                {
+                                  "name": "Content-Type",
+                                  "value": "application/json"
+                                },
+                                {
+                                  "name": "User-Agent",
+                                  "value": "dwolla-webhooks/1.1"
+                                },
+                                {
+                                  "name": "X-Dwolla-Topic",
+                                  "value": "external_party:funding_source:created"
+                                },
+                                {
+                                  "name": "X-Request-Signature-SHA-256",
+                                  "value": "3baccb0f5c1be8fb771259137c179a61926e8ce575efac2d2aefe6e54384081f"
+                                }
+                              ],
+                              "body": "{\"id\":\"1fd9bb08-e96d-4ded-ad2a-84b2390ec12f\",\"resourceId\":\"d0a73ee1-bbc3-4f53-8466-3e0295dea5c7\",\"topic\":\"external_party:funding_source:created\",\"timestamp\":\"2023-10-12T14:57:41.692Z\",\"_links\":{\"self\":{\"href\":\"https://api.dwolla.com/events/1fd9bb08-e96d-4ded-ad2a-84b2390ec12f\"},\"account\":{\"href\":\"https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1\"},\"resource\":{\"href\":\"https://api.dwolla.com/funding-sources/d0a73ee1-bbc3-4f53-8466-3e0295dea5c7\"},\"external-party\":{\"href\":\"https://api.dwolla.com/external-parties/1087d335-1a1a-4340-8107-2b512ee2c91c\"}},\"created\":\"2023-10-12T14:57:41.692Z\"}"
+                            },
+                            "responses": {
+                              "timestamp": "2023-10-12T14:57:45.583Z",
+                              "headers": [],
+                              "statusCode": 200,
+                              "body": ""
+                            }
+                          }
+                        ]
                       }
                     ]
                   }
@@ -1179,6 +2138,9 @@
           "created": {
             "type": "string",
             "format": "date-time"
+          },
+          "removed": {
+            "type": "boolean"
           }
         }
       },
@@ -1239,28 +2201,35 @@
           "amount": {
             "$ref": "#/components/schemas/Amount"
           },
-          "transferType": {
-            "type": "string",
-            "enum": [
-              "credit",
-              "debit"
-            ]
-          },
-          "transferStatus": {
+          "status": {
             "type": "string",
             "enum": [
               "created",
               "pending",
               "processed",
-              "failed"
+              "failed",
+              "returned"
             ]
           },
           "processingChannel": {
             "type": "string",
             "enum": [
-              "ach",
-              "wire"
+              "ach"
             ]
+          },
+          "failureReason": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "explanation": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1403,8 +2372,8 @@
           "email"
         ]
       },
-      "CreatePersonalExternalBodyRequestBody": {
-        "title": "CreatePersonalExternalBodyRequestBody",
+      "CreatePersonalExternalPartyRequestBody": {
+        "title": "CreatePersonalExternalPartyRequestBody",
         "type": "object",
         "properties": {
           "firstName": {
@@ -1431,12 +2400,12 @@
             "$ref": "#/components/schemas/CreateBusinessExternalPartyRequestBody"
           },
           {
-            "$ref": "#/components/schemas/CreatePersonalExternalBodyRequestBody"
+            "$ref": "#/components/schemas/CreatePersonalExternalPartyRequestBody"
           }
         ]
       },
-      "CreateFundingSourceForExternalPartyRequestBody": {
-        "title": "CreateFundingSourceForExternalPartyRequestBody",
+      "CreateBankFundingSourceRequestBody": {
+        "title": "CreateBankFundingSourceRequestBody",
         "type": "object",
         "properties": {
           "name": {
@@ -1462,6 +2431,326 @@
           "accountNumber",
           "routingNumber"
         ]
+      },
+      "CreateExchangeFundingSourceRequestBody": {
+        "title": "CreateExchangeFundingSourceRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "exchange": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "href"
+                ]
+              }
+            },
+            "required": [
+              "exchange"
+            ]
+          },
+          "bankAccountType": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "_links",
+          "bankAccountType",
+          "name"
+        ]
+      },
+      "CreateFundingSourceForExternalPartyRequestBody": {
+        "title": "CreateFundingSourceForExternalPartyRequestBody",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/CreateBankFundingSourceRequestBody"
+          },
+          {
+            "$ref": "#/components/schemas/CreateExchangeFundingSourceRequestBody"
+          }
+        ]
+      },
+      "Exchange": {
+        "title": "Exchange",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "resource-type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "exchange-partner": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "resource-type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "funding-sources": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "resource-type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          }
+        }
+      },
+      "Exchanges": {
+        "title": "Exchanges",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "exchanges": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Exchange"
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateFinicityExchangeRequestBody": {
+        "title": "CreateFinicityExchangeRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "exchange-partner": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "finicity": {
+            "type": "object",
+            "properties": {
+              "profile": {
+                "type": "integer",
+                "format": "int32"
+              },
+              "version": {
+                "type": "string"
+              },
+              "receiptId": {
+                "type": "string"
+              },
+              "receiptVersion": {
+                "type": "string"
+              },
+              "customerId": {
+                "type": "string"
+              },
+              "partnerId": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "products": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "product": {
+                      "type": "string"
+                    },
+                    "accountId": {
+                      "type": "string"
+                    },
+                    "accessPeriod": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "startTime": {
+                          "type": "string",
+                          "format": "date"
+                        },
+                        "endTime": {
+                          "type": "string",
+                          "format": "date-time"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "required": [
+          "_links",
+          "finicity"
+        ]
+      },
+      "CreateMXExchangeRequestBody": {
+        "title": "CreateMXExchangeRequestBody",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "exchange-partner": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "_links",
+          "token"
+        ]
+      },
+      "ExchangePartner": {
+        "title": "ExchangePartner",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "resource-type": {
+                    "type": "string"
+                  }
+                }
+              },
+              "funding-source": {
+                "type": "object",
+                "properties": {
+                  "href": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "resource-type": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string"
+          }
+        }
+      },
+      "ExchangePartners": {
+        "title": "ExchangePartners",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "exchange-partners": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ExchangePartner"
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
       },
       "CreateTransferRequestBody": {
         "title": "CreateTransferRequestBody",
@@ -1682,6 +2971,183 @@
                 "type": "array",
                 "items": {
                   "$ref": "#/components/schemas/TreasuryPartner"
+                }
+              }
+            }
+          }
+        }
+      },
+      "WebhookSubscription": {
+        "title": "WebhookSubscription",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "url": {
+            "type": "string"
+          },
+          "paused": {
+            "type": "boolean"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "WebhookSubscriptions": {
+        "title": "WebhookSubscriptions",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "webhook-subscriptions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WebhookSubscription"
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CreateWebhookSubscriptionRequestBody": {
+        "title": "CreateWebhookSubscriptionRequestBody",
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "secret": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url",
+          "secret"
+        ]
+      },
+      "Webhook": {
+        "title": "Webhook",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "topic": {
+            "type": "string"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "eventId": {
+            "type": "string"
+          },
+          "subscriptionId": {
+            "type": "string"
+          },
+          "attempts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "request": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "headers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "responses": {
+                  "type": "object",
+                  "properties": {
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "headers": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {}
+                      }
+                    },
+                    "statusCode": {
+                      "type": "integer"
+                    },
+                    "body": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Webhooks": {
+        "title": "Webhooks",
+        "type": "object",
+        "properties": {
+          "_links": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/HalLink"
+            }
+          },
+          "_embedded": {
+            "type": "object",
+            "properties": {
+              "webhooks": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Webhook"
                 }
               }
             }
