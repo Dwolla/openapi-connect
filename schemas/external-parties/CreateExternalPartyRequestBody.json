@@ -6,7 +6,7 @@
         "$ref": "#/CreateBusinessExternalPartyRequestBody"
       },
       {
-        "$ref": "#/CreatePersonalExternalBodyRequestBody"
+        "$ref": "#/CreatePersonalExternalPartyRequestBody"
       }
     ]
   },
@@ -27,8 +27,8 @@
       "email"
     ]
   },
-  "CreatePersonalExternalBodyRequestBody": {
-    "title": "CreatePersonalExternalBodyRequestBody",
+  "CreatePersonalExternalPartyRequestBody": {
+    "title": "CreatePersonalExternalPartyRequestBody",
     "type": "object",
     "properties": {
       "firstName": {

@@ -1,0 +1,51 @@
+{
+  "get": {
+    "tags": [
+      "Exchanges"
+    ],
+    "summary": "Retrieve exchange resource",
+    "description": "Retrieve exchange resource",
+    "operationId": "getExchangeResource",
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "description": "UUID of Exchange resource",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "example": "292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Ok",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/exchanges/Exchange.json#/Exchange"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "exchange"
+                },
+                "exchange-partner": {
+                  "href": "https://api.dwolla.com/exchange-partners/9b55a4b3-34ae-4607-b2d1-622f1eed77f9",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "exchange-partner"
+                }
+              },
+              "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+              "status": "active",
+              "created": "2023-09-21T21:41:03.283Z"
+            }
+          }
+        }
+      }
+    }
+  }
+}

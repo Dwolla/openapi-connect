@@ -37,6 +37,11 @@
                   "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
                   "type": "application/vnd.dwolla.v1.hal+json",
                   "resource-type": "external-party"
+                },
+                "remove": {
+                  "href": "https://api.dwolla.com/funding-sources/9bb42992-a03b-422d-8c52-82b14828dbac",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
                 }
               },
               "id": "9bb42992-a03b-422d-8c52-82b14828dbac",

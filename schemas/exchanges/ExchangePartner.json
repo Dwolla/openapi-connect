@@ -1,0 +1,53 @@
+{
+  "ExchangePartner": {
+    "title": "ExchangePartner",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "resource-type": {
+                "type": "string"
+              }
+            }
+          },
+          "funding-source": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "resource-type": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "created": {
+        "type": "string"
+      }
+    }
+  }
+}

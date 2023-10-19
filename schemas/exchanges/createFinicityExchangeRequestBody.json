@@ -1,0 +1,84 @@
+{
+  "CreateFinicityExchangeRequestBody": {
+    "title": "CreateFinicityExchangeRequestBody",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "exchange-partner": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "finicity": {
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "version": {
+            "type": "string"
+          },
+          "receiptId": {
+            "type": "string"
+          },
+          "receiptVersion": {
+            "type": "string"
+          },
+          "customerId": {
+            "type": "string"
+          },
+          "partnerId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "type": "string"
+                },
+                "accountId": {
+                  "type": "string"
+                },
+                "accessPeriod": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "startTime": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "endTime": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "required": [
+      "_links",
+      "finicity"
+    ]
+  }
+}

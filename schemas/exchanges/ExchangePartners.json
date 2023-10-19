@@ -1,0 +1,28 @@
+{
+  "ExchangePartners": {
+    "title": "ExchangePartners",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "_embedded": {
+        "type": "object",
+        "properties": {
+          "exchange-partners": {
+            "type": "array",
+            "items": {
+              "$ref": "./ExchangePartner.json#/ExchangePartner"
+            }
+          }
+        }
+      },
+      "total": {
+        "type": "integer",
+        "format": "int32"
+      }
+    }
+  }
+}

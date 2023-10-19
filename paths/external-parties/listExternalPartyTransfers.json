@@ -1,17 +1,17 @@
 {
   "get": {
     "tags": [
-      "Accounts",
+      "External Parties",
       "Transfers"
     ],
-    "summary": "List Transfers for Account",
-    "description": "List all Transfers that have been created by your Main Account.",
-    "operationId": "listTransfersForAccount",
+    "summary": "List Transfers for External Party",
+    "description": "List all Transfers that that belong to an External Party.",
+    "operationId": "listTransfersForExternalParty",
     "parameters": [
       {
         "in": "path",
         "name": "id",
-        "description": "UUID of Main Account",
+        "description": "UUID of External Party",
         "schema": {
           "type": "string",
           "format": "uuid"
@@ -30,7 +30,7 @@
             "example": {
               "_links": {
                 "self": {
-                  "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e/transfers",
+                  "href": "https://api.dwolla.com/external-parties/22926523-b517-43b9-959b-6ac4a422d71e/transfers",
                   "type": "application/vnd.dwolla.v1.hal+json",
                   "resource-type": "transfer"
                 },
@@ -49,36 +49,36 @@
                 "transfers": [
                   {
                     "_links": {
-                      "source": {
-                        "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
-                        "type": "application/vnd.dwolla.v1.hal+json",
-                        "resource-type": "account"
-                      },
-                      "destination-funding-source": {
-                        "href": "https://api.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
-                        "type": "application/vnd.dwolla.v1.hal+json",
-                        "resource-type": "funding-source"
-                      },
                       "self": {
-                        "href": "https://api.dwolla.com/transfers/be226616-bf05-4316-8ecb-fac1ac89c9f3",
+                        "href": "https://api.dwolla.com/transfers/7a6a0c6f-a849-431e-8288-0f89c85c9d55",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "transfer"
                       },
+                      "source": {
+                        "href": "https://api.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "account"
+                      },
                       "source-funding-source": {
-                        "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                        "href": "https://api.dwolla.com/funding-sources/f815137a-f7b1-432b-976b-e52832ede996",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                       },
                       "destination": {
-                        "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
+                        "href": "https://api.dwolla.com/external-parties/d295106b-ca20-41ad-9774-286e34fd3c2d",
                         "type": "application/vnd.dwolla.v1.hal+json",
-                        "resource-type": "account"
+                        "resource-type": "customer"
+                      },
+                      "destination-funding-source": {
+                        "href": "https://api.dwolla.com/funding-sources/c486c7ac-9e7a-44dd-a6f6-44e1166a5748",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
                       }
                     },
-                    "id": "be226616-bf05-4316-8ecb-fac1ac89c9f3",
-                    "created": "2023-09-27T15:42:59.394Z",
+                    "id": "7a6a0c6f-a849-431e-8288-0f89c85c9d55",
+                    "created": "2023-07-17T20:32:55.679Z",
                     "amount": {
-                      "value": "5.12",
+                      "value": "10.00",
                       "currency": "USD"
                     },
                     "status": "failed",

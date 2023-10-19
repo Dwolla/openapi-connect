@@ -1,0 +1,64 @@
+{
+  "Exchange": {
+    "title": "Exchange",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "self": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "resource-type": {
+                "type": "string"
+              }
+            }
+          },
+          "exchange-partner": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "resource-type": {
+                "type": "string"
+              }
+            }
+          },
+          "funding-sources": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "resource-type": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "id": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string"
+      },
+      "created": {
+        "type": "string"
+      }
+    }
+  }
+}

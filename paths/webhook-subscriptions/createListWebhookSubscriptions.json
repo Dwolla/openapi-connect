@@ -1,0 +1,85 @@
+{
+  "post": {
+    "tags": [
+      "Webhook Subscriptions"
+    ],
+    "summary": "Create a Webhook Subscription",
+    "description": "Create a webhook subscription to receive POST requests from Dwolla (called webhooks) when events associated with your application occur.",
+    "operationId": "createWebhookSubscription",
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "$ref": "../../schemas/webhook-subscriptions/CreateWebhookSubscriptionRequestBody.json#/CreateWebhookSubscriptionRequestBody"
+          },
+          "example": {
+            "url": "http://myapplication.com/webhooks",
+            "secret": "sshhhhhh"
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "Created",
+        "headers": {
+          "Location": {
+            "$ref": "../../schemas/common.json#/components/headers/Location"
+          }
+        }
+      }
+    }
+  },
+  "get": {
+    "tags": [
+      "Webhook Subscriptions"
+    ],
+    "summary": "List Webhook Subscriptions",
+    "description": "List all Webhook Subscriptions that belong to an application.",
+    "operationId": "listWebhookSubscriptions",
+    "responses": {
+      "200": {
+        "description": "OK",
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/webhook-subscriptions/WebhookSubscriptions.json#/WebhookSubscriptions"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/webhook-subscriptions",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "webhook-subscription"
+                }
+              },
+              "_embedded": {
+                "webhook-subscriptions": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "webhook-subscription"
+                      },
+                      "webhooks": {
+                        "href": "https://api.dwolla.com/webhook-subscriptions/6fdb35c6-c653-4aa2-86d9-fbac0c78af38/webhooks",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "webhook"
+                      }
+                    },
+                    "id": "6fdb35c6-c653-4aa2-86d9-fbac0c78af38",
+                    "url": "http://myapplication.com/webhooks",
+                    "paused": false,
+                    "created": "2023-09-22T19:20:19.996Z"
+                  }
+                ]
+              },
+              "total": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

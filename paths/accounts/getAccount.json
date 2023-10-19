@@ -32,6 +32,16 @@
                   "href": "https://api.dwolla.com/accounts/22926523-b517-43b9-959b-6ac4a422d71e",
                   "type": "application/vnd.dwolla.v1.hal+json",
                   "resource-type": "account"
+                },
+                "transfers": {
+                  "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1/transfers",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "transfer"
+                },
+                "funding-sources": {
+                  "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1/funding-sources",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
                 }
               },
               "id": "22926523-b517-43b9-959b-6ac4a422d71e",

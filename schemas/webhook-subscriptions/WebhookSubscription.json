@@ -1,6 +1,6 @@
 {
-  "FundingSource": {
-    "title": "FundingSource",
+  "WebhookSubscription": {
+    "title": "WebhookSubscription",
     "type": "object",
     "properties": {
       "_links": {
@@ -12,22 +12,15 @@
         "type": "string",
         "format": "uuid"
       },
-      "bankAccountType": {
-        "type": "string",
-        "enum": [
-          "checking",
-          "savings"
-        ]
-      },
-      "name": {
+      "url": {
         "type": "string"
+      },
+      "paused": {
+        "type": "boolean"
       },
       "created": {
         "type": "string",
         "format": "date-time"
-      },
-      "removed": {
-        "type": "boolean"
       }
     }
   }

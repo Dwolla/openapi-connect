@@ -25,11 +25,26 @@
           "schema": {
             "$ref": "../../schemas/external-parties/CreateFundingSourceForExternalPartyRequestBody.json#/CreateFundingSourceForExternalPartyRequestBody"
           },
-          "example": {
-            "name": "Test Bank",
-            "bankAccountType": "checking",
-            "accountNumber": "123456789",
-            "routingNumber": "222222226"
+          "examples": {
+            "Bank Funding Source": {
+              "value": {
+                "name": "Test Bank",
+                "bankAccountType": "checking",
+                "accountNumber": "123456789",
+                "routingNumber": "222222226"
+              }
+            },
+            "Exchange Funding Source": {
+              "value": {
+                "_links": {
+                  "exchange": {
+                    "href": "https://api.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+                  }
+                },
+                "bankAccountType": "checking",
+                "name": "Jane Doe - Checking"
+              }
+            }
           }
         }
       }
@@ -79,10 +94,43 @@
                   "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae/funding-sources",
                   "type": "application/vnd.dwolla.v1.hal+json",
                   "resource-type": "funding-source"
+                },
+                "next": {
+                  "href": "https://api.dwolla.com/transfers?cursor=pkRCuXGXtIXuX4lYR3rxzsOAUzB4xs-aJwCztcz2i2f5-C8M4NhitjEfPGdJsTSit6eKVvTtS5KQ32dl3Urq1ukwYrz0ebXtYaJGJQNlFJ0mUruIRmaMqbBj-5UKl3piqzoGwdIUjw3_umKrJUC8obrSOlAbSoNu5N7ANPc8tIKiKHfYJVLHcVeuV7EbCYDmBByXHFSP0TIEtRJwP_FV_o4V6gdcBSJpRq2EIYN7qPC9FJtTvYMcvPZH6KnEiziq_A04jhftCmU1pTabEnpNMLha2ZkXghZuk64Fpy49MugYH94itx5skcYr1ANatYycKKpUgKGhdfXMLyV1V3iDAG-y3NDd6cfvuC-2DonZ2xF5TklF8MzRkbTnOnstpF5t",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
+                },
+                "prev": {
+                  "href": "https://api.dwolla.com/transfers?cursor=O3kLyIi9uBjF7vAzYtPQHw6dRzWVG1EH2nMxUCqrpXv2Sg8fLbDPXzmTx1eAhiW5g4nRvZKGoLIBMyteWaYolTq3vG7F1pDloFtJiKjh2lLyG5QU9XZdoxrMls4PXalchYknZ-Db6NRAFow3H2GWWTf5vWuLpEZlIyGKOTXRdr7hK0CL3Rzw-Qnq7OkDHp1zVG12fbKYTp4YloTg7Ss4ENInU-AJihbzmMj0D3Ly1zXqHVRp6v3uIaEBdljhPfNISreQrz8XPkBSARjqBv0zGusvZJeaTQMbUo7e8SgG9V6HbYkWQcWQvK9U2CxG9VBDi6eTyVXuZoFc1w9uSgAoc2UCMg2eBvwY-KbLyw7PzqDLN3bMiHkYlxRCbSd0kN7E",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
                 }
               },
               "_embedded": {
                 "funding-sources": [
+                  {
+                    "_links": {
+                      "self": {
+                        "href": "https://api.dwolla.com/funding-sources/d0a73ee1-bbc3-4f53-8466-3e0295dea5c7",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                      },
+                      "external-party": {
+                        "href": "https://api.dwolla.com/external-parties/83ded54e-7367-44e2-b7b4-ae1a5780beae",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "external-party"
+                      },
+                      "remove": {
+                        "href": "https://api.dwolla.com/funding-sources/d0a73ee1-bbc3-4f53-8466-3e0295dea5c7",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                      }
+                    },
+                    "id": "d0a73ee1-bbc3-4f53-8466-3e0295dea5c7",
+                    "bankAccountType": "checking",
+                    "name": "Test Bank",
+                    "created": "2023-07-15T17:52:37.211Z"
+                  },
                   {
                     "_links": {
                       "self": {
@@ -99,7 +147,8 @@
                     "id": "9bb42992-a03b-422d-8c52-82b14828dbac",
                     "bankAccountType": "checking",
                     "name": "Test Bank",
-                    "created": "2023-07-15T17:52:37.211Z"
+                    "created": "2023-07-15T17:52:37.211Z",
+                    "removed": false
                   }
                 ]
               }

@@ -1,0 +1,90 @@
+{
+  "Webhook": {
+    "title": "Webhook",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "additionalProperties": {
+          "$ref": "../common.json#/components/schemas/HalLink"
+        }
+      },
+      "id": {
+        "type": "string"
+      },
+      "topic": {
+        "type": "string"
+      },
+      "accountId": {
+        "type": "string"
+      },
+      "eventId": {
+        "type": "string"
+      },
+      "subscriptionId": {
+        "type": "string"
+      },
+      "attempts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "request": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "headers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "body": {
+                  "type": "string"
+                }
+              }
+            },
+            "responses": {
+              "type": "object",
+              "properties": {
+                "timestamp": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "headers": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                },
+                "statusCode": {
+                  "type": "integer"
+                },
+                "body": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

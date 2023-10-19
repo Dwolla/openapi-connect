@@ -1,6 +1,17 @@
 {
   "CreateFundingSourceForExternalPartyRequestBody": {
     "title": "CreateFundingSourceForExternalPartyRequestBody",
+    "oneOf": [
+      {
+        "$ref": "#/CreateBankFundingSourceRequestBody"
+      },
+      {
+        "$ref": "#/CreateExchangeFundingSourceRequestBody"
+      }
+    ]
+  },
+  "CreateBankFundingSourceRequestBody": {
+    "title": "CreateBankFundingSourceRequestBody",
     "type": "object",
     "properties": {
       "name": {
@@ -25,6 +36,42 @@
       "bankAccountType",
       "accountNumber",
       "routingNumber"
+    ]
+  },
+  "CreateExchangeFundingSourceRequestBody": {
+    "title": "CreateExchangeFundingSourceRequestBody",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "exchange": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "href"
+            ]
+          }
+        },
+        "required": [
+          "exchange"
+        ]
+      },
+      "bankAccountType": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_links",
+      "bankAccountType",
+      "name"
     ]
   }
 }

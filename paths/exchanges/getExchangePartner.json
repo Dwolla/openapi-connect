@@ -1,0 +1,54 @@
+{
+  "get": {
+    "tags": [
+      "Exchanges"
+    ],
+    "summary": "Retrieve exchange partner",
+    "description": "Retrieve exchange partner",
+    "operationId": "getExchangePartner",
+    "parameters": [
+      {
+        "name": "id",
+        "in": "path",
+        "description": "Exchange Partner resource unique identifier.",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Ok",
+        "headers": {},
+        "content": {
+          "application/vnd.dwolla.v1.hal+json": {
+            "schema": {
+              "$ref": "../../schemas/exchanges/ExchangePartner.json#/ExchangePartner"
+            },
+            "example": {
+              "_links": {
+                "self": {
+                  "href": "https://api.dwolla.com/exchange-partners/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "exchange-partner"
+                },
+                "funding-source": {
+                  "href": "https://api.dwolla.com/funding-sources",
+                  "type": "application/vnd.dwolla.v1.hal+json",
+                  "resource-type": "funding-source"
+                }
+              },
+              "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+              "name": "MX",
+              "status": "active",
+              "created": "2023-09-30T19:31:59.106Z"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "RemoveFundingSourceRequestBody": {
+    "title": "RemoveFundingSourceRequestBody",
+    "type": "object",
+    "properties": {
+      "removed": {
+        "type": "boolean"
+      },
+      "required": [
+        "removed"
+      ]
+    }
+  }
+}

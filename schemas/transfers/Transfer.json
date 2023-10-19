@@ -19,28 +19,35 @@
       "amount": {
         "$ref": "../common.json#/components/schemas/Amount"
       },
-      "transferType": {
-        "type": "string",
-        "enum": [
-          "credit",
-          "debit"
-        ]
-      },
-      "transferStatus": {
+      "status": {
         "type": "string",
         "enum": [
           "created",
           "pending",
           "processed",
-          "failed"
+          "failed",
+          "returned"
         ]
       },
       "processingChannel": {
         "type": "string",
         "enum": [
-          "ach",
-          "wire"
+          "ach"
         ]
+      },
+      "failureReason": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        }
       }
     }
   }

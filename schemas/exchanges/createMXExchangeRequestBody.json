@@ -1,0 +1,28 @@
+{
+  "CreateMXExchangeRequestBody": {
+    "title": "CreateMXExchangeRequestBody",
+    "type": "object",
+    "properties": {
+      "_links": {
+        "type": "object",
+        "properties": {
+          "exchange-partner": {
+            "type": "object",
+            "properties": {
+              "href": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "token": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "_links",
+      "token"
+    ]
+  }
+}
