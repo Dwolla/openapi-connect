@@ -27,8 +27,7 @@
         "format": "date-time"
       },
       "removed": {
-        "type": "string",
-        "format": "date-time"
+        "type": "boolean"
       }
     }
   }

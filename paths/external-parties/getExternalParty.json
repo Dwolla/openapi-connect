@@ -4,7 +4,7 @@
       "External Parties"
     ],
     "summary": "Get External Party",
-    "description": "Get an External Party by ID",
+    "description": "Retrieve basic deails about an exernal party by ID.",
     "operationId": "getExternalParty",
     "parameters": [
       {

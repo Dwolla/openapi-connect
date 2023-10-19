@@ -15,10 +15,10 @@
           "example": {
             "_links": {
               "source": {
-                "href": "https://api.dwolla.com/funding-sources/{{sourceFundingSourceId}}"
+                "href": "https://api.dwolla.com/funding-sources/cdc9c38f-6350-48c1-8fe0-6335145a502c"
               },
               "destination": {
-                "href": "https://api.dwolla.com/funding-sources/{{destinationFundingSourceId}}"
+                "href": "https://api.dwolla.com/funding-sources/f5ac7b1f-45c7-4ba2-8c5c-8cd7541261be"
               }
             },
             "amount": {

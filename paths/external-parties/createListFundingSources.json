@@ -148,7 +148,7 @@
                     "bankAccountType": "checking",
                     "name": "Test Bank",
                     "created": "2023-07-15T17:52:37.211Z",
-                    "removed": "2023-09-18T21:56:41.104Z"
+                    "removed": false
                   }
                 ]
               }

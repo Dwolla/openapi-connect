@@ -34,13 +34,21 @@
                       "href": "https://api.dwolla.com/treasury-accounts/e60d1372-f398-4c03-b4e7-499a4a7f8b27",
                       "type": "application/vnd.dwolla.v1.hal+json",
                       "resource-type": "treasury-account"
+                    },
+                    "treasury-partner": {
+                        "href": "https://api.dwolla.com/treasury-partners/eefc6eb3-1ffe-417a-aac1-1462ef762759",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "treasury-partners"
+                    },
+                    "account": {
+                        "href": "https://api.dwolla.com/accounts/d4a0876f-642e-478b-b684-bfb8632c5937",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "account"
                     }
                   },
                   "id": "e60d1372-f398-4c03-b4e7-499a4a7f8b27",
                   "name": "My JPM Account",
                   "created": "2023-07-14T19:16:46.694Z",
-                  "accountId": "22926523-b517-43b9-959b-6ac4a422d71e",
-                  "treasuryPartnerId": "63a5f9d2-de34-40ae-a96e-0ab02cb7abd9",
                   "treasuryPartnerContext": {
                     "achCoId": "4161803583"
                   }
