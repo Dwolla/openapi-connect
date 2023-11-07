@@ -62,7 +62,7 @@
                   {
                     "_links": {
                       "self": {
-                        "href": "https://apidwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                        "href": "https://api.dwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "exchange"
                       },
